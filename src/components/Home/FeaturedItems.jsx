@@ -3,16 +3,16 @@ import React from 'react';
 const FeaturedItems = () => {
     return (
         <div className='grid grid-cols-2 gap-5'>
-            <div className='flex flex-col items-center bg-yellow-400 py-16 row-span-2'>
+            <div className='flex flex-col items-center  py-16 row-span-2 bg-yellow-400'>
                 <div>
-                    <img className='w-80' src="https://pearl.stylemixthemes.com/food/wp-content/uploads/sites/55/2020/04/infobox-img-1.png" alt="" />
+                    <img src="https://pearl.stylemixthemes.com/food/wp-content/uploads/sites/55/2020/04/infobox-img-1.png" alt="" />
                 </div>
                 <div className='flex flex-col items-center justify-center'>
                     <h2 className='text-3xl font-semibold'>Lorem ipsum dolor sit amet consectetur</h2>
                     <button class="btn bg-white hover:text-white border-0 text-slate-800 font-semibold rounded-full px-10 mt-4">Button</button>
                 </div>
             </div>
-            <div className='flex items-center py-12'>
+            <div className='flex items-center py-10 bg-yellow-400'>
                 <div>
                     <img src="https://pearl.stylemixthemes.com/food/wp-content/uploads/sites/55/2020/04/infobox-img-1.png" alt="" />
                 </div>
@@ -21,7 +21,7 @@ const FeaturedItems = () => {
                     <button class="btn bg-yellow-500 border-0 hover:text-white text-slate-800 font-semibold rounded-full px-10 mt-4">Button</button>
                 </div>
             </div>
-            <div className='flex items-center bg-yellow-400 py-12'>
+            <div className='flex items-center bg-yellow-400 py-10'>
                 <div>
                     <img src="https://pearl.stylemixthemes.com/food/wp-content/uploads/sites/55/2020/04/infobox-img-1.png" alt="" />
                 </div>
