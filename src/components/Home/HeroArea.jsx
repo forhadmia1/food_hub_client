@@ -2,7 +2,7 @@ import React from 'react';
 
 const HeroArea = () => {
     return (
-        <div class="hero min-h-screen items-center justify-start px-20 bg-[url('https://img.freepik.com/free-photo/fresh-pizza-with-herbs-sun-dried-tomatoes-gray-table_93675-135263.jpg?w=740&t=st=1658847597~exp=1658848197~hmac=0281671878b7fbdd5486a791e50bed95c5d92e0df442eac34fc3cee3e496005e')]">
+        <div class="hero min-h-screen items-center justify-start md:px-20 bg-[url('https://img.freepik.com/free-photo/fresh-pizza-with-herbs-sun-dried-tomatoes-gray-table_93675-135263.jpg?w=740&t=st=1658847597~exp=1658848197~hmac=0281671878b7fbdd5486a791e50bed95c5d92e0df442eac34fc3cee3e496005e')]">
             <div class="hero-content text-neutral-content">
                 <div class="max-w-md text-slate-800">
                     <h1 class="mb-5 text-5xl font-bold">Hello there</h1>

@@ -2,12 +2,12 @@ import React from 'react';
 
 const FeaturedItems = () => {
     return (
-        <div className='grid grid-cols-2 gap-5'>
-            <div className='flex flex-col items-center  py-16 row-span-2 bg-yellow-400'>
+        <div className='grid md:grid-cols-2 gap-5'>
+            <div className='flex md:flex-col items-center  py-10 row-span-2 bg-yellow-400'>
                 <div>
                     <img src="https://pearl.stylemixthemes.com/food/wp-content/uploads/sites/55/2020/04/infobox-img-1.png" alt="" />
                 </div>
-                <div className='flex flex-col items-center justify-center'>
+                <div className='md:flex flex-col items-center justify-center'>
                     <h2 className='text-3xl font-semibold'>Lorem ipsum dolor sit amet consectetur</h2>
                     <button class="btn bg-white hover:text-white border-0 text-slate-800 font-semibold rounded-full px-10 mt-4">Button</button>
                 </div>
