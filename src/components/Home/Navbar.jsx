@@ -5,7 +5,7 @@ import NavbarCss from '../../Styles/Navbar.module.css'
 
 const Navbar = () => {
     return (
-        <div class="navbar bg-base-100 md:px-24 md:mt-8 mt-4">
+        <div class="navbar bg-base-100 md:px-24 py-6">
             <div class="navbar-start w-full justify-between">
                 <Link to={'/'}>
                     <img className='w-32' src={logo} alt="" />

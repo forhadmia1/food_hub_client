@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Home from "./Pages/Home";
 import MenuPage from "./Pages/MenuPage";
 import LoginPage from "./Pages/LoginPage";
+import RegisterPage from "./Pages/RegisterPage";
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/menu" element={<MenuPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
       </Routes>
     </>
   );
