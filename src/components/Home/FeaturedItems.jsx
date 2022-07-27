@@ -9,7 +9,7 @@ const FeaturedItems = () => {
                 </div>
                 <div className='md:flex flex-col items-center justify-center'>
                     <h2 className='text-3xl font-semibold'>Lorem ipsum dolor sit amet consectetur</h2>
-                    <button class="btn bg-white hover:text-white border-0 text-slate-800 font-semibold rounded-full px-10 mt-4">Button</button>
+                    <button class="btn bg-white hover:text-white border-0 text-slate-800 font-semibold rounded-full px-10 mt-4">View Menu</button>
                 </div>
             </div>
             <div className='flex items-center py-10 bg-yellow-400'>
@@ -18,7 +18,7 @@ const FeaturedItems = () => {
                 </div>
                 <div>
                     <h2 className='text-3xl font-semibold'>Lorem ipsum dolor sit amet consectetur</h2>
-                    <button class="btn bg-yellow-500 border-0 hover:text-white text-slate-800 font-semibold rounded-full px-10 mt-4">Button</button>
+                    <button class="btn bg-white border-0 hover:text-white text-slate-800 font-semibold rounded-full px-10 mt-4">View Menu</button>
                 </div>
             </div>
             <div className='flex items-center bg-yellow-400 py-10'>
@@ -27,7 +27,7 @@ const FeaturedItems = () => {
                 </div>
                 <div>
                     <h2 className='text-3xl font-semibold'>Lorem ipsum dolor sit amet consectetur</h2>
-                    <button class="btn bg-white border-0 hover:text-white text-slate-800 font-semibold rounded-full px-10 mt-4">Button</button>
+                    <button class="btn bg-white border-0 hover:text-white text-slate-800 font-semibold rounded-full px-10 mt-4">View Menu</button>
                 </div>
             </div>
         </div>

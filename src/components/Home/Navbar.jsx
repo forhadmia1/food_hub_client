@@ -16,22 +16,22 @@ const Navbar = () => {
                 </label>
                 <ul tabindex="0" class="menu menu-compact dropdown-content mt-2 p-2 shadow bg-base-100 rounded-box w-48 ml-[-140px]">
                     <li><Link to={'/'}>Home</Link></li>
-                    <li><Link to={'/'}>Menu</Link></li>
+                    <li><Link to={'/menu'}>Menu</Link></li>
                     <li><Link to={'/'}>About</Link></li>
                     <li><Link to={'/'}>Contact</Link></li>
                     <li><Link to={'/'}>Order</Link></li>
-                    <li><Link to={'/'}>Login</Link></li>
+                    <li><Link to={'/login'}>Login</Link></li>
                 </ul>
                 </div>
             </div>
             <div class="navbar-end hidden lg:flex">
                 <ul className={NavbarCss.link} >
                     <li ><Link to={'/'}>Home</Link></li>
-                    <li><Link to={'/'}>Menu</Link></li>
+                    <li><Link to={'/menu'}>Menu</Link></li>
                     <li><Link to={'/'}>About</Link></li>
                     <li><Link to={'/'}>Contact</Link></li>
                     <li><Link to={'/'}>Order</Link></li>
-                    <li><Link to={'/'}>Login</Link></li>
+                    <li><Link to={'/login'}>Login</Link></li>
                 </ul>
             </div>
             </div>
