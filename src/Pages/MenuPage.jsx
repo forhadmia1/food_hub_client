@@ -1,6 +1,5 @@
 import React from 'react';
-import Footer from '../components/Home/Footer';
-import FoodView from '../features/FoodView';
+import FoodView from '../features/foods/FoodView';
 
 const MenuPage = () => {
     return (
@@ -10,7 +9,6 @@ const MenuPage = () => {
                 <p className='text-md mt-4'>Home{'>'}Food Items</p>
             </div>
             <FoodView/>
-            {/* <Footer/> */}
         </div>
     );
 };

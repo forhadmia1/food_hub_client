@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector,useDispatch } from 'react-redux/es/exports';
-import Footer from '../components/Home/Footer';
+import Footer from '../../components/Home/Footer';
+import CartView from '../carts/CartView';
 import FoodCard from './FoodCard';
 import { fetchFoods } from './foodSlice';
 
@@ -12,7 +13,7 @@ const FoodView = () => {
         dispatch(fetchFoods())
     },[])
     
-    if(food.isLoading){
+    if(food.isLoading ){
         return <p>Loading......</p>
     }
 
@@ -49,7 +50,7 @@ const FoodView = () => {
                 </div>
                 <div className='px-2 hidden md:block sticky top-10 h-screen'>
                     <h2 className='text-4xl font-bold'>Your Order</h2>
-                    <p className='text-xl mt-4'>CHOOSE AN ITEM FROM THE MENU TO GET STARTED.</p>
+                    <CartView/>
                 </div>
             </div>
             <Footer/>

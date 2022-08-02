@@ -1,6 +1,15 @@
 import React from 'react';
+import { addToCarts } from '../carts/cartSlice';
+import { useDispatch } from 'react-redux/es/exports';
 
 const FoodCard = () => {
+    const dispatch= useDispatch()
+    const handleAddToCart=()=>{
+        dispatch(addToCarts({
+            name:'hello',
+            dis:"leremmhdfsfjl sdfj sdfjlo sdfjhl"
+        }))
+    }
     return (
         <div className='flex px-2'>
             <div class="avatar">
@@ -16,7 +25,7 @@ const FoodCard = () => {
                 <div className='flex justify-between mt-2'>
                     <p className='text-sm text-gray-500'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, accusamus. Laborum recusandae natus earum accusantium distinctio dicta</p>
                     <div className='flex items-end ml-2'>
-                        <button class="btn-sm px-6 text-white btn-warning rounded-full font-semibold">Add</button>
+                        <button onClick={()=>handleAddToCart()} class="btn-sm px-6 text-white btn-warning rounded-full font-semibold">Add</button>
                     </div>
                 </div>
             </div>
