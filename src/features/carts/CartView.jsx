@@ -14,13 +14,22 @@ const CartView = () => {
     if(carts.isLoading){
         return <p>Loading</p>
     }
+    console.log(carts);
 
     return (
-        <div className='flex flex-col gap-3 mt-4'>
-            {
-              carts.carts.length>0?  carts.carts.map(item=><CartCard></CartCard>):
-              <p className='text-xl mt-4'>CHOOSE AN ITEM FROM THE MENU TO GET STARTED.</p>
-            }
+        <div>
+            <div className='flex flex-col gap-5 mt-4 h-80 overflow-auto scroll-smooth'>
+                {
+                    carts.carts.length>0?  carts.carts.map(item=><CartCard
+                    key={item._id}
+                    item={item}
+                    ></CartCard>):
+                    <p className='text-xl mt-4'>CHOOSE AN ITEM FROM THE MENU TO GET STARTED.</p>
+                }
+            </div>
+            <div className='mt-4'>
+            <button class="btn btn-warning w-full">CheckOut</button>
+            </div>
         </div>
     );
 };

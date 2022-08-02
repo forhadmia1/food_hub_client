@@ -6,8 +6,13 @@ export const fetchCarts = createAsyncThunk('carts/fetchCarts', async () => {
     return res.data;
 })
 
-export const addToCarts = createAsyncThunk('carts/fetchCarts', async (data) => {
+export const addToCarts = createAsyncThunk('carts/addToCarts', async (data) => {
     const res = await axios.post('http://localhost:5000/order', data)
+    return res.data;
+})
+
+export const removeFromCarts = createAsyncThunk('carts/removeFromCarts', async (id) => {
+    const res = await axios.delete(`http://localhost:5000/order/${id}`)
     return res.data;
 })
 
@@ -31,6 +36,14 @@ const cartSlice = createSlice({
             state.isLoading = false
             state.carts = []
             state.error = action.error.message
+        })
+        builder.addCase(addToCarts.fulfilled, (state, action) => {
+            state.carts = [...state.carts, action.payload]
+        })
+        builder.addCase(removeFromCarts.fulfilled, (state, action) => {
+            const id = action.payload;
+            const rest = state.carts.filter(item => item._id !== id);
+            state.carts = rest;
         })
     }
 })
