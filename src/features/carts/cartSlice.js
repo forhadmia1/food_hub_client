@@ -2,17 +2,17 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const fetchCarts = createAsyncThunk('carts/fetchCarts', async () => {
-    const res = await axios.get('http://localhost:5000/order')
+    const res = await axios.get('http://localhost:5000/api/v1/order')
     return res.data;
 })
 
 export const addToCarts = createAsyncThunk('carts/addToCarts', async (data) => {
-    const res = await axios.post('http://localhost:5000/order', data)
+    const res = await axios.post('http://localhost:5000/api/v1/order', data)
     return res.data;
 })
 
 export const removeFromCarts = createAsyncThunk('carts/removeFromCarts', async (id) => {
-    const res = await axios.delete(`http://localhost:5000/order/${id}`)
+    const res = await axios.delete(`http://localhost:5000/api/v1/order/${id}`)
     return res.data;
 })
 

@@ -5,10 +5,10 @@ import NavbarCss from '../../Styles/Navbar.module.css'
 
 const Navbar = () => {
     return (
-        <div class="navbar bg-base-100 md:px-24 py-6">
-            <div class="navbar-start w-full justify-between">
+        <nav class="navbar z-50 bg-base-100 md:px-24 py-10">
+            <div class="navbar-start z-50 w-full justify-between">
                 <Link to={'/'}>
-                    <img className='w-32' src={logo} alt="" />
+                    <img className='w-32 z-50' src={logo} alt="" />
                 </Link>
                 <div class="dropdown">
                 <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -24,7 +24,7 @@ const Navbar = () => {
                 </ul>
                 </div>
             </div>
-            <div class="navbar-end hidden lg:flex">
+            <div class="navbar-end hidden lg:flex z-50">
                 <ul className={NavbarCss.link} >
                     <li ><Link to={'/'}>Home</Link></li>
                     <li><Link to={'/menu'}>Menu</Link></li>
@@ -34,7 +34,7 @@ const Navbar = () => {
                     <li><Link to={'/login'}>Login</Link></li>
                 </ul>
             </div>
-            </div>
+            </nav>
     );
 };
 

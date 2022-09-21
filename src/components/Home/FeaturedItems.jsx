@@ -1,36 +1,88 @@
 import React from 'react';
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+import { Pagination, Navigation } from "swiper";
+
 
 const FeaturedItems = () => {
+
     return (
-        <div className='grid md:grid-cols-2 gap-5'>
-            <div className='flex md:flex-col items-center  py-10 row-span-2 bg-yellow-400'>
+        <section className='-mt-24'>
+        <Swiper
+        slidesPerView={3}
+        spaceBetween={30}
+        slidesPerGroup={1}
+        loop={true}
+        loopFillGroupWithBlank={true}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Pagination, Navigation]}
+        className="mySwiper"
+      >
+        <SwiperSlide>
+            <div className='flex items-center py-16 bg-yellow-400 rounded'>
                 <div>
                     <img src="https://pearl.stylemixthemes.com/food/wp-content/uploads/sites/55/2020/04/infobox-img-1.png" alt="" />
                 </div>
-                <div className='md:flex flex-col items-center justify-center'>
-                    <h2 className='text-3xl font-semibold'>Lorem ipsum dolor sit amet consectetur</h2>
+                <div className='md:flex flex-col items-start justify-center'>
+                    <h2 className='text-2xl font-semibold'>Lorem ipsum dolor sit amet consectetur</h2>
                     <button class="btn bg-white hover:text-white border-0 text-slate-800 font-semibold rounded-full px-10 mt-4">View Menu</button>
                 </div>
             </div>
-            <div className='flex items-center py-10 bg-yellow-400'>
+        </SwiperSlide>
+        <SwiperSlide>
+            <div className='flex items-center py-16 bg-yellow-400 rounded'>
                 <div>
                     <img src="https://pearl.stylemixthemes.com/food/wp-content/uploads/sites/55/2020/04/infobox-img-1.png" alt="" />
                 </div>
-                <div>
-                    <h2 className='text-3xl font-semibold'>Lorem ipsum dolor sit amet consectetur</h2>
-                    <button class="btn bg-white border-0 hover:text-white text-slate-800 font-semibold rounded-full px-10 mt-4">View Menu</button>
+                <div className='md:flex flex-col items-start justify-center'>
+                    <h2 className='text-2xl font-semibold'>Lorem ipsum dolor sit amet consectetur</h2>
+                    <button class="btn bg-white hover:text-white border-0 text-slate-800 font-semibold rounded-full px-10 mt-4">View Menu</button>
                 </div>
             </div>
-            <div className='flex items-center bg-yellow-400 py-10'>
+        </SwiperSlide>
+        <SwiperSlide>
+            <div className='flex items-center py-16 bg-yellow-400 rounded'>
                 <div>
                     <img src="https://pearl.stylemixthemes.com/food/wp-content/uploads/sites/55/2020/04/infobox-img-1.png" alt="" />
                 </div>
-                <div>
-                    <h2 className='text-3xl font-semibold'>Lorem ipsum dolor sit amet consectetur</h2>
-                    <button class="btn bg-white border-0 hover:text-white text-slate-800 font-semibold rounded-full px-10 mt-4">View Menu</button>
+                <div className='md:flex flex-col items-start justify-center'>
+                    <h2 className='text-2xl font-semibold'>Lorem ipsum dolor sit amet consectetur</h2>
+                    <button class="btn bg-white hover:text-white border-0 text-slate-800 font-semibold rounded-full px-10 mt-4">View Menu</button>
                 </div>
             </div>
-        </div>
+        </SwiperSlide>
+        <SwiperSlide>
+            <div className='flex items-center py-16 bg-yellow-400 rounded'>
+                <div>
+                    <img src="https://pearl.stylemixthemes.com/food/wp-content/uploads/sites/55/2020/04/infobox-img-1.png" alt="" />
+                </div>
+                <div className='md:flex flex-col items-start justify-center'>
+                    <h2 className='text-2xl font-semibold'>Lorem ipsum dolor sit amet consectetur</h2>
+                    <button class="btn bg-white hover:text-white border-0 text-slate-800 font-semibold rounded-full px-10 mt-4">View Menu</button>
+                </div>
+            </div>
+        </SwiperSlide>
+        <SwiperSlide>
+            <div className='flex items-center py-16 bg-yellow-400 rounded'>
+                <div>
+                    <img src="https://pearl.stylemixthemes.com/food/wp-content/uploads/sites/55/2020/04/infobox-img-1.png" alt="" />
+                </div>
+                <div className='md:flex flex-col items-start justify-center'>
+                    <h2 className='text-2xl font-semibold'>Lorem ipsum dolor sit amet consectetur</h2>
+                    <button class="btn bg-white hover:text-white border-0 text-slate-800 font-semibold rounded-full px-10 mt-4">View Menu</button>
+                </div>
+            </div>
+        </SwiperSlide>
+      </Swiper>
+        </section>
     );
 };
 

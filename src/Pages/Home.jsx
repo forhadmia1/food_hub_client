@@ -8,14 +8,14 @@ import Newsletter from '../components/Home/Newsletter';
 
 const Home = () => {
     return (
-        <div className='mt-[-100px]'>
+        <>
             <HeroArea/>
             <FeaturedItems/>
             <ChooseUs/>
             <About/>
             <Newsletter/>
             <Footer/>
-        </div>
+        </>
     );
 };
 
