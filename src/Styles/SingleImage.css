@@ -1,0 +1,15 @@
+.imgContainer{
+    position: relative;
+    overflow: hidden;
+}
+
+.imgBox{
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.imgContainer:hover .imgBox{
+    opacity: 1;
+}
