@@ -4,7 +4,7 @@ import {HiOutlineShoppingBag} from 'react-icons/hi'
 const About = () => {
     return (
         <section className='bg-yellow-400 py-32 mt-16'>
-            <div className='grid grid-cols-2 px-24 gap-5'>
+            <div className='grid grid-cols-2 px-24 gap-10'>
                 <div>
                     <h2 className='text-6xl font-bold'>About Us</h2>
                     <p className='mt-4 text-xl font-thin'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam nemo esse sed deleniti, qui vel consequuntur tenetur nulla expedita temporibus, laboriosam, itaque voluptas perferendis eum ex. </p>

@@ -6,6 +6,7 @@ import Footer from '../components/Home/Footer';
 import HeroArea from '../components/Home/HeroArea';
 import ImageBar from '../components/Home/ImageBar';
 import Newsletter from '../components/Home/Newsletter';
+import Testimonial from '../components/Home/Testimonial';
 
 const Home = () => {
     return (
@@ -15,6 +16,7 @@ const Home = () => {
             <ChooseUs/>
             <About/>
             <ImageBar/>
+            <Testimonial/>
             <Newsletter/>
             <Footer/>
         </>
