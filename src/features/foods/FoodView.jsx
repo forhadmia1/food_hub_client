@@ -8,6 +8,7 @@ import { fetchFoods, getCategory, searchFood } from './foodSlice';
 import FoodCard from './FoodCard';
 
 const FoodView = () => {
+    const [category, setCategory]= useState('')
     const [keyword, setKeyword]= useState('')
     const {isLoading,foods,error}= useSelector(state=>state.foods)
     const dispatch= useDispatch()
@@ -21,6 +22,10 @@ const FoodView = () => {
         dispatch(searchFood(keyword))
     },[keyword])
 
+    useEffect(()=>{
+        dispatch(getCategory(category))
+    },[category])
+
 
     if(isLoading){
         return <p>Loading.......</p>
@@ -29,13 +34,37 @@ const FoodView = () => {
         <div className='sticky top-10 h-screen'>
         <div className='grid md:grid-cols-4 gap-5 mt-20 md:mx-24 px-6 md:px-0'>
                 <div className='px-6 text-xl font-semibold hidden md:block sticky top-10 h-screen'>
-                    <ul class="menu bg-base-100 w-56">
-                        <li onClick={()=> dispatch(getCategory())}>All</li>
-                        <li onClick={()=> dispatch(getCategory('desserts'))}>Desserts</li>
-                        <li onClick={()=> dispatch(getCategory('dinner'))}>Dinner</li>
-                        <li onClick={()=> dispatch(getCategory('drink'))}>Drink</li>
-                        <li onClick={()=> dispatch(getCategory('meat'))}>Meat</li>
-                        <li onClick={()=> dispatch(getCategory('starters'))}>Starters</li>
+                    <ul class="menu bg-base-100 w-56 gap-2">
+                        <li 
+                            className={` hover:bg-slate-200 px-4 py-2 rounded ${category||'bg-slate-200'}`} 
+                            onClick={()=> setCategory()}
+                        >All
+                        </li>
+                        <li 
+                            className={` hover:bg-slate-200 px-4 py-2 rounded ${category==='desserts'&& 'bg-slate-200'}`} 
+                            onClick={()=> setCategory('desserts')}
+                        >Desserts
+                        </li>
+                        <li 
+                            className={` hover:bg-slate-200 px-4 py-2 rounded ${category==='dinner'&& 'bg-slate-200'}`} 
+                            onClick={()=> setCategory('dinner')}
+                        >Dinner
+                        </li>
+                        <li 
+                            className={` hover:bg-slate-200 px-4 py-2 rounded ${category==='drink'&& 'bg-slate-200'}`} 
+                            onClick={()=> setCategory('drink')}
+                        >Drink
+                        </li>
+                        <li 
+                            className={` hover:bg-slate-200 px-4 py-2 rounded ${category==='meat'&& 'bg-slate-200'}`} 
+                            onClick={()=> setCategory('meat')}
+                        >Meat
+                        </li>
+                        <li 
+                            className={` hover:bg-slate-200 px-4 py-2 rounded ${category==='starters'&& 'bg-slate-200'}`} 
+                            onClick={()=> setCategory('starters')}
+                        >Starters
+                        </li>
                     </ul>
                 </div>
                 <div className='col-span-2'>
