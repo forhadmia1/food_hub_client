@@ -14,7 +14,6 @@ const CartView = () => {
     if(carts.isLoading){
         return <p>Loading</p>
     }
-    console.log(carts);
 
     return (
         <div>
