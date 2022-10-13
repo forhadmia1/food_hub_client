@@ -12,7 +12,7 @@ import { Pagination, Navigation, Autoplay } from "swiper";
 const Testimonial = () => {
     return (
         <section className='mt-10'>
-            <h2 className='text-center text-6xl text-slate-700 font-bold'>Our Happy Clients Says</h2>
+            <h2 className='text-center md:text-6xl text-3xl text-slate-700 font-bold'>Our Happy Clients Says</h2>
             <Swiper
         slidesPerView={1}
         spaceBetween={30}

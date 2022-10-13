@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import { useSelector,useDispatch } from 'react-redux/es/exports';
+import { useNavigate } from 'react-router-dom';
 import CartCard from './CartCard';
-import { fetchCarts } from './cartSlice';
+import { fetchCarts,removeFromCarts } from './cartSlice';
 
 const CartView = () => {
+    const navigate= useNavigate()
     const carts= useSelector(state=>state.carts)
     const dispatch= useDispatch()
 
@@ -12,7 +14,7 @@ const CartView = () => {
     },[])
 
     if(carts.isLoading){
-        return <p>Loading</p>
+        return <p>Loading....</p>
     }
 
     return (
@@ -22,12 +24,13 @@ const CartView = () => {
                     carts.carts.length>0?  carts.carts.map(item=><CartCard
                     key={item._id}
                     item={item}
-                    ></CartCard>):
+                    >
+                    </CartCard>):
                     <p className='text-xl mt-4'>CHOOSE AN ITEM FROM THE MENU TO GET STARTED.</p>
                 }
             </div>
             <div className='mt-4'>
-            <button class="btn btn-warning w-full">CheckOut</button>
+            <button onClick={()=> navigate('/order')} class="btn btn-warning w-full">View Order</button>
             </div>
         </div>
     );

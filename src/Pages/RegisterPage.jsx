@@ -1,11 +1,13 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import Layout from '../components/Layout';
 
 const RegisterPage = () => {
     return (
+        <Layout>
         <div>
-            <div class="bg-gray-700 min-h-screen flex flex-col">
-            <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-4">
+            <div class="flex flex-col">
+            <div class="container max-w-md shadow mx-auto flex-1 flex flex-col items-center justify-center px-4">
                 <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
                     <h1 class="mb-8 text-3xl text-center">Sign up</h1>
                     <input 
@@ -47,18 +49,19 @@ const RegisterPage = () => {
                     </div>
                 </div>
 
-                <div class="text-grey-dark mt-6 text-white">
+                <div class="text-grey-dark mt-6 text-black">
                     Already have an account? 
                     <Link to="/login" class="no-underline border-b border-blue text-blue">
-                        <span className='font-bold ml-2'>
+                        <span className='font-bold ml-2 '>
                         Log in
                         </span>
-                    </Link>.
+                    </Link>
                 </div>
             </div>
         </div>
             
         </div>
+        </Layout>
     );
 };
 

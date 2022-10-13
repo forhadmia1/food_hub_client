@@ -1,9 +1,19 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
+import auth from '../firebase.init';
+import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import Layout from '../components/Layout';
 
 const LoginPage = () => {
+    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    const navigate= useNavigate()
+
+    if(user?.user){
+        navigate('/')
+    }
     return (
-    <section class="min-h-screen flex items-stretch text-white ">
+    <Layout>
+        <section class="min-h-screen flex items-stretch text-white ">
         <div class="lg:flex w-1/2 hidden bg-gray-500 bg-no-repeat bg-cover relative items-center bg-[url('https://img.freepik.com/free-photo/big-sandwich-hamburger-burger-with-beef-red-onion-tomato-fried-bacon_2829-5398.jpg?w=740&t=st=1658914529~exp=1658915129~hmac=423a5cde4326e3b2fae6548c1bd63c7108d6c34ba0f392589b0a1c346be588e9')]">
             <div class="absolute bg-black opacity-60 inset-0 z-0"></div>
             <div class="w-full px-24 z-10">
@@ -18,8 +28,8 @@ const LoginPage = () => {
                     FOOD HUB
                 </h1>
                 <div class="py-6 space-x-2">
-                    <span class="w-10 h-10 items-center justify-center inline-flex rounded-full font-bold text-lg border-2 border-white">f</span>
-                    <span class="w-10 h-10 items-center justify-center inline-flex rounded-full font-bold text-lg border-2 border-white">G</span>
+                    <span class="w-10 h-10 items-center justify-center inline-flex rounded-full font-bold text-lg border-2 border-white cursor-pointer">f</span>
+                    <span onClick={()=>signInWithGoogle()} class="w-10 h-10 items-center justify-center inline-flex rounded-full font-bold text-lg border-2 border-white cursor-pointer">G</span>
                 </div>
                 <p class="text-gray-100 text-lg">
                 or use email to <Link to="/register" className='font-bold underline'>create account</Link>
@@ -41,6 +51,7 @@ const LoginPage = () => {
             </div>
         </div>
     </section>
+    </Layout>
     );
 };
 

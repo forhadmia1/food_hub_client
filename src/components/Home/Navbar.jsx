@@ -1,12 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo/logo.png';
+import auth from '../../firebase.init';
 import NavbarCss from '../../Styles/Navbar.module.css'
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { signOut } from 'firebase/auth';
 
 const Navbar = () => {
+    const [user, loading, error] = useAuthState(auth);
+
+    if(loading){
+        return <p>Loading.....</p>
+    }
+    console.log(user);
     return (
-        <nav class="navbar z-50 bg-base-100 md:px-24 py-10">
-            <div class="navbar-start z-50 w-full justify-between">
+        <nav class="navbar z-50 bg-base-100 md:px-24 py-4 md:py-5">
+            <div class="navbar-start z-50 w-full justify-between px-2">
                 <Link to={'/'}>
                     <img className='w-32 z-50' src={logo} alt="" />
                 </Link>
@@ -20,7 +29,7 @@ const Navbar = () => {
                     <li><Link to={'/'}>About</Link></li>
                     <li><Link to={'/'}>Contact</Link></li>
                     <li><Link to={'/'}>Order</Link></li>
-                    <li><Link to={'/login'}>Login</Link></li>
+                    {user? <li><button>SignOut</button></li>:<li><Link to={'/login'}>Login</Link></li>}
                 </ul>
                 </div>
             </div>
@@ -30,8 +39,8 @@ const Navbar = () => {
                     <li><Link to={'/menu'}>Menu</Link></li>
                     <li><Link to={'/'}>About</Link></li>
                     <li><Link to={'/'}>Contact</Link></li>
-                    <li><Link to={'/'}>Order</Link></li>
-                    <li><Link to={'/login'}>Login</Link></li>
+                    <li><Link to={'/order'}>Order</Link></li>
+                     {user? <li><button onClick={()=> signOut(auth)}>SignOut</button></li>:<li><Link to={'/login'}>Login</Link></li>}
                 </ul>
             </div>
             </nav>

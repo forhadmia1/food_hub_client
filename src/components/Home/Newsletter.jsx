@@ -2,11 +2,11 @@ import React from 'react';
 
 const Newsletter = () => {
     return (
-        <div class="px-6 py-8 mx-auto bg-[url('/src/assets/banner/bg_subscribe.jpg')]">
-            <section class="mb-32 text-gray-800 text-center">
+        <div class="px-4 py-8 mx-auto bg-[url('/src/assets/banner/bg_subscribe.jpg')]">
+            <section class="md:mb-32 mb-10 text-gray-800 text-center">
             <div class="flex flex-wrap justify-center">
                 <div class="grow-0 shrink-0 flex-basis w-full lg:w-6/12 px-3">
-                <h2 class="text-5xl text-white font-bold mb-6 mt-16">Subscribe to the newsletter</h2>
+                <h2 class="text-2xl md:text-5xl text-white font-bold mb-6 mt-16">Subscribe to the newsletter</h2>
 
                 <p class="text-white text-xl font-thin mb-12">We will write rarely and only high-quality content.</p>
 

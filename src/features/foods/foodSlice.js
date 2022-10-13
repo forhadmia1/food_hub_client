@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const fetchFoods = createAsyncThunk('foods/fetchFoods', async () => {
-    const res = await axios.get(`http://localhost:5000/api/v1/foods`);
+export const fetchFoods = createAsyncThunk('foods/fetchFoods', async (endPoint) => {
+    const res = await axios.get(`http://localhost:5000/api/v1/foods${endPoint}`);
     return res.data;
 })
 
@@ -13,25 +13,6 @@ const foodSlice = createSlice({
         allFoods: [],
         foods: [],
         error: null
-    },
-    reducers: {
-        getCategory: (state, action) => {
-            if (action.payload) {
-                const result = state.allFoods.filter(food => food.category === action.payload)
-                state.foods = result;
-            } else {
-                state.foods = state.allFoods
-            }
-        },
-        searchFood: (state, action) => {
-            const result = [];
-            state.allFoods.forEach(food => {
-                if (food.name.toLowerCase().includes(action.payload.toLowerCase())) {
-                    result.push(food)
-                }
-            })
-            state.foods = result
-        }
     },
     extraReducers: (builder) => {
         builder.addCase(fetchFoods.pending, (state) => {
@@ -52,5 +33,4 @@ const foodSlice = createSlice({
     },
 })
 
-export const { getCategory, searchFood } = foodSlice.actions;
 export default foodSlice.reducer;

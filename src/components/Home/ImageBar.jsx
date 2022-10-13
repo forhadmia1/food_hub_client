@@ -4,14 +4,13 @@ import SingleImage from '../SingleImage';
 
 const ImageBar = () => {
     return (
-        <div className='flex h-60'>
+        <div className='md:flex h-60 hidden'>
             {
-                images.map(image=><SingleImage
-                key={image.id}
-                image={image}
+                images.map(image => <SingleImage
+                    key={image.id}
+                    image={image}
                 />)
             }
-            
         </div>
     );
 };

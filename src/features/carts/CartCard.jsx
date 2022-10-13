@@ -7,7 +7,7 @@ const CartCard = ({item}) => {
     return (
         <div className='flex px-2'>
             <div class="avatar">
-                <div class="w-20 h-20 rounded">
+                <div class="w-20 rounded">
                     <img src="https://placeimg.com/192/192/people" alt=''/>
                 </div>
             </div>
@@ -15,7 +15,9 @@ const CartCard = ({item}) => {
                 <div>
                     <h2 className='text-sm'>{item.name}</h2>
                     <p className='text-md font-bold'>${item.price}</p>
-                    <button onClick={()=> dispatch(removeFromCarts(item._id))} class="btn btn-sm bg-error border-none rounded-full px-4 text-white">Remove</button>
+                     <div>
+                        <button onClick={()=> dispatch(removeFromCarts(item._id))} className='px-4 py-1 rounded bg-yellow-400 hover:bg-yellow-500 text-white'>Remove</button>
+                    </div>
                 </div>
             </div>
         </div>
