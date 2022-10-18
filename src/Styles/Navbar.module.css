@@ -1,26 +1,29 @@
-
-.link{
-    display: flex;
-    gap: 20px;
-    font-weight: 600;
+.link {
+  display: flex;
+  gap: 20px;
+  font-weight: 600;
 }
 
-.link>li{
-    position: relative;
+.link > li {
+  position: relative;
 }
-.link>li::after{
-    content: '';
-    top: 100%;
-    left: 10%;
-    width: 0%;
-    height: 3px;
-    background-color: red;
-    position: absolute;
-    border-radius: 5px;
-    visibility: hidden;
+.link > li::after {
+  content: "";
+  top: 100%;
+  left: 10%;
+  width: 0%;
+  height: 3px;
+  background-color: red;
+  position: absolute;
+  border-radius: 5px;
+  visibility: hidden;
 }
-.link>li:hover::after{
-    visibility: visible;
-    width: 80%;
-    transition: 0.5s;
+.link > li:hover::after {
+  visibility: visible;
+  width: 80%;
+  transition: 0.5s;
+}
+
+.link > li:last-child:hover::after {
+  visibility: hidden;
 }

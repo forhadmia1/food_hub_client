@@ -1,19 +1,13 @@
-import React, { useEffect } from 'react';
-import { useSelector,useDispatch } from 'react-redux/es/exports';
+import React from 'react';
+import { useSelector } from 'react-redux/es/exports';
 import { useNavigate } from 'react-router-dom';
 import CartCard from './CartCard';
-import { fetchCarts,removeFromCarts } from './cartSlice';
 
 const CartView = () => {
-    const navigate= useNavigate()
-    const carts= useSelector(state=>state.carts)
-    const dispatch= useDispatch()
+    const navigate = useNavigate()
+    const carts = useSelector(state => state.carts)
 
-    useEffect(()=>{
-        dispatch(fetchCarts())
-    },[])
-
-    if(carts.isLoading){
+    if (carts.isLoading) {
         return <p>Loading....</p>
     }
 
@@ -21,16 +15,16 @@ const CartView = () => {
         <div>
             <div className='flex flex-col gap-5 mt-4 h-80 overflow-auto scroll-smooth'>
                 {
-                    carts.carts.length>0?  carts.carts.map(item=><CartCard
-                    key={item._id}
-                    item={item}
+                    carts.carts.length > 0 ? carts.carts.map(item => <CartCard
+                        key={item._id}
+                        item={item}
                     >
-                    </CartCard>):
-                    <p className='text-xl mt-4'>CHOOSE AN ITEM FROM THE MENU TO GET STARTED.</p>
+                    </CartCard>) :
+                        <p className='text-xl mt-4'>CHOOSE AN ITEM FROM THE MENU TO GET STARTED.</p>
                 }
             </div>
             <div className='mt-4'>
-            <button onClick={()=> navigate('/order')} class="btn btn-warning w-full">View Order</button>
+                <button onClick={() => navigate('/order')} className="btn btn-warning w-full">View Order</button>
             </div>
         </div>
     );

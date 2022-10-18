@@ -11,7 +11,6 @@ const foodSlice = createSlice({
     initialState: {
         isLoading: false,
         allFoods: [],
-        foods: [],
         error: null
     },
     extraReducers: (builder) => {
@@ -21,13 +20,11 @@ const foodSlice = createSlice({
         builder.addCase(fetchFoods.fulfilled, (state, action) => {
             state.isLoading = false;
             state.allFoods = action.payload;
-            state.foods = action.payload;
             state.error = null;
         })
         builder.addCase(fetchFoods.rejected, (state, action) => {
             state.isLoading = false;
             state.allFoods = [];
-            state.foods = [];
             state.error = action.error.message;
         })
     },

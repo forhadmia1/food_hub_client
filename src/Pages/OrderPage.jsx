@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCarts } from '../features/carts/cartSlice';
 import Layout from '../components/Layout';
 import OrderItemRow from '../components/OrderItemRow';
+import { getTotal } from '../features/carts/cartSlice';
 
 const OrderPage = () => {
     const carts = useSelector(state => state.carts)
     const dispatch = useDispatch()
 
+
     useEffect(() => {
-        dispatch(fetchCarts())
-    }, [])
+        dispatch(getTotal())
+    }, [carts, dispatch])
 
     if (carts.isLoading) {
         return <p>Loading....</p>
@@ -22,10 +23,12 @@ const OrderPage = () => {
                 <div className='col-span-3 bg-slate-300 bg-opacity-80 rounded '>
                     <table className='w-full'>
                         <thead>
-                            <th className='py-2'>Item</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Total</th>
+                            <tr>
+                                <th className='py-2'>Item</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                            </tr>
                         </thead>
                         <tbody>
                             {carts.carts.map(item => <OrderItemRow
@@ -39,16 +42,16 @@ const OrderPage = () => {
                     <h2 className='text-2xl font-semibold text-center'>Submit Order</h2>
                     <div className='flex justify-between mt-5 px-3'>
                         <h2 className='text-xl font-semibold'>Subtotal</h2>
-                        <p className='font-semibold'>$100</p>
+                        <p className='font-semibold'>${carts.TotalAmount}</p>
                     </div>
                     <div className='flex justify-between mt-10 mb-2 px-3'>
                         <h2 className='text-lg font-semibold'>Shipping</h2>
-                        <p className='font-semibold'>$10</p>
+                        <p className='font-semibold'>${carts.TotalAmount * 0.05}</p>
                     </div>
                     <hr />
                     <div className='flex justify-between mt-2 px-3'>
                         <h2 className='text-2xl font-semibold'>Total</h2>
-                        <p className='font-semibold'>$110</p>
+                        <p className='font-semibold'>${carts.TotalAmount * 0.05 + carts.TotalAmount}</p>
                     </div>
                     <div className='flex justify-center items-center mt-5'>
                         <button className='bg-yellow-400 px-6 py-2 rounded text-white font-semibold hover:bg-yellow-500'>Procced to checkout</button>

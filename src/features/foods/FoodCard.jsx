@@ -1,27 +1,31 @@
 import React from 'react';
-import { addToCarts } from '../carts/cartSlice';
 import { useDispatch } from 'react-redux/es/exports';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import { addToCart } from '../carts/cartSlice';
+import { useNavigate } from 'react-router-dom';
 
-const FoodCard = ({food}) => {
-    const [user]= useAuthState(auth)
-    const {_id, ...rest}= food;
-    const dispatch= useDispatch()
+const FoodCard = ({ food }) => {
+    const [user] = useAuthState(auth)
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
-    const handleAddToCart=()=>{
-        dispatch(addToCarts({
-            ...rest,
-            quantity:1,
-            email: user.email
-        }))
+    const handleAddToCart = () => {
+        if (!user) {
+            navigate('/login')
+        } else {
+            dispatch(addToCart({
+                ...food
+            }))
+        }
+
     }
-    
+
     return (
         <div className='flex px-2'>
-            <div class="avatar">
-                <div class="w-24 rounded">
-                    <img src="https://placeimg.com/192/192/people" alt=''/>
+            <div className="avatar">
+                <div className="w-24 rounded">
+                    <img src="https://placeimg.com/192/192/people" alt='' />
                 </div>
             </div>
             <div className='ml-3'>
@@ -32,7 +36,7 @@ const FoodCard = ({food}) => {
                 <div className='flex flex-col gap-2 justify-between mt-2'>
                     <p className='text-sm text-gray-500'>{food.description}</p>
                     <div className='flex items-end ml-2'>
-                        <button onClick={()=>handleAddToCart()} class="btn-sm px-6 text-white btn-warning rounded-full font-semibold">Add</button>
+                        <button onClick={() => handleAddToCart()} className="btn-sm px-6 text-white btn-warning rounded-full font-semibold">Add</button>
                     </div>
                 </div>
             </div>
