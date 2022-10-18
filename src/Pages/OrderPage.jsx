@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Layout from '../components/Layout';
 import OrderItemRow from '../components/OrderItemRow';
+import OrderModal from '../components/OrderModal';
 import { getTotal } from '../features/carts/cartSlice';
 
 const OrderPage = () => {
+    const [modalIsOpen, setIsOpen] = useState(false);
     const carts = useSelector(state => state.carts)
     const dispatch = useDispatch()
 
@@ -46,18 +48,21 @@ const OrderPage = () => {
                     </div>
                     <div className='flex justify-between mt-10 mb-2 px-3'>
                         <h2 className='text-lg font-semibold'>Shipping</h2>
-                        <p className='font-semibold'>${carts.TotalAmount * 0.05}</p>
+                        <p className='font-semibold'>$0</p>
                     </div>
                     <hr />
                     <div className='flex justify-between mt-2 px-3'>
                         <h2 className='text-2xl font-semibold'>Total</h2>
-                        <p className='font-semibold'>${carts.TotalAmount * 0.05 + carts.TotalAmount}</p>
+                        <p className='font-semibold'>${carts.TotalAmount}</p>
                     </div>
                     <div className='flex justify-center items-center mt-5'>
-                        <button className='bg-yellow-400 px-6 py-2 rounded text-white font-semibold hover:bg-yellow-500'>Procced to checkout</button>
+                        <button onClick={() => setIsOpen(true)} className='bg-yellow-400 px-6 py-2 rounded text-white font-semibold hover:bg-yellow-500'>Procced to checkout</button>
                     </div>
                 </div>
             </div>
+            <OrderModal
+                modalIsOpen={modalIsOpen}
+                setIsOpen={setIsOpen} />
         </Layout >
     );
 };

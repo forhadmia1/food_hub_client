@@ -18,7 +18,7 @@ const Navbar = () => {
 
     return (
         <nav className="navbar z-50 bg-base-100 md:px-24 py-4 md:py-5">
-            <div className="navbar-start z-50 w-full justify-between px-2">
+            <div className="navbar-start  w-full justify-between px-2 z-20">
                 <Link to={'/'}>
                     <img className='w-32 z-50' src={logo} alt="" />
                 </Link>
@@ -30,7 +30,7 @@ const Navbar = () => {
                     <label tabIndex="0" className="btn btn-ghost lg:hidden">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                     </label>
-                    <ul tabIndex="0" className="menu menu-compact dropdown-content mt-2 p-2 shadow bg-base-100 rounded-box w-48 ml-[-140px]">
+                    <ul tabIndex="0" className="menu menu-compact dropdown-content mt-2 p-2  shadow bg-base-100 rounded-box w-48 ml-[-140px]">
                         <li><Link to={'/'}>Home</Link></li>
                         <li><Link to={'/menu'}>Menu</Link></li>
                         <li><Link to={'/'}>About</Link></li>
@@ -40,7 +40,7 @@ const Navbar = () => {
                     </ul>
                 </div>
             </div>
-            <div className="navbar-end hidden lg:flex z-50">
+            <div className="navbar-end hidden lg:flex z-20">
                 <ul className={NavbarCss.link} >
                     <li ><Link to={'/'}>Home</Link></li>
                     <li><Link to={'/menu'}>Menu</Link></li>
