@@ -8,6 +8,7 @@ import RequiteAuth from './components/authentication/RequiteAuth';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getTotal } from './features/carts/cartSlice';
+import AllOrderPage from './Pages/AllOrderPage';
 
 
 function App() {
@@ -24,6 +25,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/menu" element={<MenuPage />} />
         <Route path="/order" element={
+          <RequiteAuth>
+            <AllOrderPage />
+          </RequiteAuth>} />
+        <Route path="/cart" element={
           <RequiteAuth>
             <OrderPage />
           </RequiteAuth>} />

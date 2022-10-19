@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Modal from 'react-modal';
@@ -120,8 +120,13 @@ const OrderModal = ({ modalIsOpen, setIsOpen }) => {
                         </form>
                     </div>
                 </div> : <div >
+                    <div className='flex justify-end'>
+                        <button onClick={closeModal} className='bg-yellow-400 px-2 py-2 rounded'>Close <span className='font-bold'>X</span></button>
+                    </div>
                     <Elements stripe={stripePromise}>
-                        <CheckoutForm order={order} />
+                        <CheckoutForm
+                            setIsOpen={setIsOpen}
+                            order={order} />
                     </Elements>
                 </div>}
             </Modal>

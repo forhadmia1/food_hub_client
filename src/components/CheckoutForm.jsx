@@ -5,14 +5,16 @@ import {
     CardElement
 } from "@stripe/react-stripe-js";
 import '../Styles/Payment.css'
+import swal from 'sweetalert';
+import { useNavigate } from "react-router-dom";
 
-export default function CheckoutForm({ order }) {
+export default function CheckoutForm({ order, setIsOpen }) {
     const stripe = useStripe();
     const elements = useElements();
     const [clientSecret, setClientSecret] = useState('')
     const [errMessage, setErrMessage] = useState(null);
-    const [sucess, setSuccess] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const navigate = useNavigate()
 
     useEffect(() => {
         fetch("http://localhost:5000/api/v1/order/create-payment-intent", {
@@ -63,8 +65,6 @@ export default function CheckoutForm({ order }) {
         if (error) {
             setErrMessage(error.message);
         } else {
-            setErrMessage('')
-            setSuccess('Congrats, Successfully complete payments')
             const newOrder = { ...order, transectionId: paymentIntent.id }
             fetch(`http://localhost:5000/api/v1/order/`, {
                 method: 'POST',
@@ -74,7 +74,16 @@ export default function CheckoutForm({ order }) {
                 body: JSON.stringify(newOrder)
             }).then(res => {
                 if (res.status === 200) {
-                    console.log(res.message);
+                    setIsOpen(false)
+                    swal({
+                        title: "Good job!",
+                        text: "Successfully Placed Order",
+                        icon: "success",
+                        buttons: false,
+                        timer: 3000,
+                    });
+                    navigate('/order')
+                    localStorage.removeItem('carts')
                 }
             })
         }
@@ -92,7 +101,6 @@ export default function CheckoutForm({ order }) {
             </button>
             {/* Show any error or success messages */}
             {errMessage && <div className="text-red-500 text-center mt-3" >{errMessage}</div>}
-            {sucess && <div className="text-green-500 text-center mt-3">{sucess}</div>}
         </form>
     );
 }
