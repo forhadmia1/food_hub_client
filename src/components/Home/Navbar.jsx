@@ -36,6 +36,7 @@ const Navbar = () => {
                         <li><Link to={'/'}>About</Link></li>
                         <li><Link to={'/'}>Contact</Link></li>
                         <li><Link to={'/'}>Order</Link></li>
+                        <li><Link to={'/admin'}>Dashboard</Link></li>
                         {user ? <li><button>SignOut</button></li> : <li><Link to={'/login'}>Login</Link></li>}
                     </ul>
                 </div>
@@ -47,6 +48,7 @@ const Navbar = () => {
                     <li><Link to={'/'}>About</Link></li>
                     <li><Link to={'/'}>Contact</Link></li>
                     <li><Link to={'/order'}>Order</Link></li>
+                    <li><Link to={'/admin'}>Dashboard</Link></li>
                     {user ? <li><button onClick={() => signOut(auth)}>SignOut</button></li> : <li><Link to={'/login'}>Login</Link></li>}
                     <li><Link to={'/cart'}><HiShoppingBag className='text-3xl relative' /></Link>
                         <span className='absolute -top-2 px-3 py-1 rounded-full bg-red-500 left-2/4 text-white font-bold'>{quantity}</span>
