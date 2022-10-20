@@ -15,7 +15,7 @@ const CartView = () => {
         <div>
             <div className='flex flex-col gap-5 mt-4 h-80 overflow-auto scroll-smooth'>
                 {
-                    carts.carts.length > 0 ? carts.carts.map(item => <CartCard
+                    carts?.carts?.length > 0 ? carts.carts.map(item => <CartCard
                         key={item._id}
                         item={item}
                     >
@@ -24,7 +24,7 @@ const CartView = () => {
                 }
             </div>
             <div className='mt-4'>
-                <button onClick={() => navigate('/order')} className="btn btn-warning w-full">View Order</button>
+                <button onClick={() => navigate('/cart')} className="btn btn-warning w-full">View Cart</button>
             </div>
         </div>
     );

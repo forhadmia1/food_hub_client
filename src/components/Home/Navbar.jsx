@@ -9,7 +9,7 @@ import { HiShoppingBag } from 'react-icons/hi';
 import { useSelector } from 'react-redux';
 
 const Navbar = () => {
-    const [user, loading, error] = useAuthState(auth);
+    const [user, loading] = useAuthState(auth);
     const { quantity } = useSelector(state => state.carts)
 
     if (loading) {
@@ -17,8 +17,8 @@ const Navbar = () => {
     }
 
     return (
-        <nav className="navbar z-50 bg-base-100 md:px-24 py-4 md:py-5">
-            <div className="navbar-start  w-full justify-between px-2 z-20">
+        <nav className="navbar  bg-base-100 md:px-24 py-4 md:py-5">
+            <div className="navbar-start  w-full justify-between px-2 nav-visible">
                 <Link to={'/'}>
                     <img className='w-32 z-50' src={logo} alt="" />
                 </Link>
@@ -40,7 +40,7 @@ const Navbar = () => {
                     </ul>
                 </div>
             </div>
-            <div className="navbar-end hidden lg:flex z-20">
+            <div className="navbar-end hidden lg:flex nav-visible">
                 <ul className={NavbarCss.link} >
                     <li ><Link to={'/'}>Home</Link></li>
                     <li><Link to={'/menu'}>Menu</Link></li>

@@ -9,6 +9,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getTotal } from './features/carts/cartSlice';
 import AllOrderPage from './Pages/AllOrderPage';
+import AdminPage from './Pages/AdminPage';
+import AddItems from './components/admin/AddItems';
+import Orders from './components/admin/Orders';
+import Reviews from './components/admin/Reviews';
+import Items from './components/admin/Items';
+import Users from './components/admin/Users';
 
 
 function App() {
@@ -32,6 +38,13 @@ function App() {
           <RequiteAuth>
             <OrderPage />
           </RequiteAuth>} />
+        <Route path="/admin" element={<AdminPage />} >
+          <Route path='addItem' element={<AddItems />} />
+          <Route path='orders' element={<Orders />} />
+          <Route path='reviews' element={<Reviews />} />
+          <Route path='allItems' element={<Items />} />
+          <Route path='users' element={<Users />} />
+        </Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
       </Routes>

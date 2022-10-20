@@ -82,8 +82,8 @@ export default function CheckoutForm({ order, setIsOpen }) {
                         buttons: false,
                         timer: 3000,
                     });
-                    navigate('/order')
                     localStorage.removeItem('carts')
+                    navigate('/order')
                 }
             })
         }

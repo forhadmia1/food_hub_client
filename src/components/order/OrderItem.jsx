@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
 import ReviewModal from './ReviewModal';
 
-const OrderItem = ({ item }) => {
+const OrderItem = ({ item, reload, setReload }) => {
     const [modalIsOpen, setIsOpen] = useState(false);
     console.log(item);
     const [isVisible, setIsVisible] = useState(false)
@@ -42,7 +42,7 @@ const OrderItem = ({ item }) => {
                         </div>
                         <div>
                             <p className='text-center font-semibold'>Transection Id</p>
-                            <p>{item.transectionId}</p>
+                            <p className='text-orange-500 font-bold'>{item.transectionId}</p>
                         </div>
                     </div>
                     <div className={`bg-white px-5 py-5 mt-2 rounded ${!isVisible ? 'hidden' : 'block'}`}>
@@ -68,14 +68,16 @@ const OrderItem = ({ item }) => {
                         </table>
                     </div>
                     <div className='flex gap-5 items-center mt-5'>
-                        <p className='font-bold'>Status: <span className='font-normal'>{item.orderStatus ? item.orderStatus : 'Pending'}</span></p>
-                        <button onClick={() => orderHandle(item._id)} className='bg-slate-500 px-4 py-1 rounded-full text-white hover:bg-slate-600'>Complete</button>
+                        <p className='font-bold'>Status:{item.orderStatus ? <span className={`font-bold ml-2 ${item.orderStatus === 'complete' ? 'text-green-500' : 'text-red-500'}`}>{item.orderStatus}</span> : <span className='font-bold ml-2 text-red-500'>Pending</span>}</p>
+                        <button onClick={() => orderHandle(item._id)} className={`bg-orange-500 px-4 py-1 rounded-full text-white hover:bg-orange-500  disabled:bg-slate-600 disabled:text-slate-400`} {...item.orderStatus !== 'shipped' && { disabled: true }}>Complete</button>
                     </div>
                 </div>
             </div>
             <ReviewModal
                 modalIsOpen={modalIsOpen}
                 setIsOpen={setIsOpen}
+                reload={reload}
+                setReload={setReload}
             />
         </div>
     );

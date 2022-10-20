@@ -49,8 +49,9 @@ const OrderModal = ({ modalIsOpen, setIsOpen }) => {
     const stripePromise = loadStripe("pk_test_51L31xRIBSJhlneIDCMOq1S0WmZPaYWMRjA1VxPaGwfWSm9BaJ8vp4ptaPeF4CczBGbYGabAh4EIGMqo08xn6jdGK00LPPoCJ4r");
 
     return (
-        <div>
+        <div >
             <Modal
+                shouldCloseOnOverlayClick={false}
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
                 style={customStyles}
@@ -60,7 +61,7 @@ const OrderModal = ({ modalIsOpen, setIsOpen }) => {
                         <button onClick={closeModal} className='bg-yellow-400 px-2 py-2 rounded'>Close <span className='font-bold'>X</span></button>
                     </div>
                     <div>
-                        <form onSubmit={handleForm} className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+                        <form onSubmit={handleForm} className="bg-white px-6 py-5 rounded shadow-md text-black w-full">
                             <label htmlFor="fullname" className='ml-1 mb-2'>
                                 Name:
                                 <input
