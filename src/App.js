@@ -15,6 +15,7 @@ import Orders from './components/admin/Orders';
 import Reviews from './components/admin/Reviews';
 import Items from './components/admin/Items';
 import Users from './components/admin/Users';
+import RequiteAdmin from './components/authentication/RequireAdmin';
 
 
 function App() {
@@ -38,7 +39,10 @@ function App() {
           <RequiteAuth>
             <OrderPage />
           </RequiteAuth>} />
-        <Route path="/admin" element={<AdminPage />} >
+        <Route path="/admin" element={
+          <RequiteAdmin>
+            <AdminPage />
+          </RequiteAdmin>} >
           <Route path='addItem' element={<AddItems />} />
           <Route path='orders' element={<Orders />} />
           <Route path='reviews' element={<Reviews />} />
