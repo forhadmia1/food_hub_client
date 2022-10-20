@@ -1,9 +1,105 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import swal from 'sweetalert';
 
 const Users = () => {
+    const [users, setUsers] = useState([])
+    const [reload, setReload] = useState(false)
+    useEffect(() => {
+        fetch('http://localhost:5000/api/v1/user/all')
+            .then(res => res.json())
+            .then(data => setUsers(data))
+    }, [reload])
+
+    const handleAdmin = (email) => {
+        swal({
+            title: "Are you sure?",
+            text: "You want to make admin!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    fetch(`http://localhost:5000/api/v1/user/create-admin?email=${email}`, {
+                        method: 'PUT'
+                    }).then(res => {
+                        if (res.status === 200) {
+                            swal({
+                                title: "Great!",
+                                text: "Successfully make admin",
+                                icon: "success",
+                                buttons: false,
+                                timer: 2000
+                            });
+                            setReload(!reload)
+                        }
+                    })
+                } else {
+                    swal("Your file is safe!");
+                }
+            });
+
+    }
+
+    const handleDelete = (email) => {
+        swal({
+            title: "Are you sure?",
+            text: "You want to delete user",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    fetch(`http://localhost:5000/api/v1/user?email=${email}`, {
+                        method: 'DELETE'
+                    }).then(res => {
+                        if (res.status === 200) {
+                            swal({
+                                title: "Great!",
+                                text: "Successfully delete user",
+                                icon: "success",
+                                buttons: false,
+                                timer: 2000
+                            });
+                            setReload(!reload)
+                        }
+                    })
+                } else {
+                    swal("Your file is safe!");
+                }
+            });
+    }
     return (
-        <div>
-            All users
+        <div className='w-full px-5 py-5'>
+            <table className='w-full border-2 border-slate-300 rounded'>
+                <thead className='bg-yellow-500'>
+                    <tr>
+                        <th className='text-start  py-1 px-2'>Name</th>
+                        <th className='text-start py-1 px-2'>Email</th>
+                        <th className='text-start py-1 px-2'>Status</th>
+                        <th className='text-start py-1 px-2'>Action</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    {
+                        users.map(user => <tr
+                            key={user._id}
+                            className='border-t-2'>
+                            <td className='py-1 px-2'>{user.name}</td>
+                            <td className='py-1 px-2'>{user.email}</td>
+                            <td className={`py-1 px-2 ${user.isAdmin && 'font-bold'}`}>{user.isAdmin ? user.isAdmin : 'user'}</td>
+                            <td className='py-1 px-2 flex gap-2'>
+                                <button onClick={() => handleAdmin(user.email)} className='px-2 py-1 bg-orange-400 hover:bg-orange-500 rounded disabled:bg-slate-600' {...user.isAdmin && { disabled: true }}>Make Admin</button>
+
+                                <button onClick={() => handleDelete(user.email)} className='px-2 py-1 text-white bg-red-500 hover:bg-red-600 rounded ' >Delete</button>
+                            </td>
+                        </tr>)
+                    }
+                </tbody>
+            </table>
         </div>
     );
 };

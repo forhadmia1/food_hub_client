@@ -43,8 +43,9 @@ function App() {
           <RequiteAdmin>
             <AdminPage />
           </RequiteAdmin>} >
-          <Route path='addItem' element={<AddItems />} />
+          <Route index element={<Orders />} />
           <Route path='orders' element={<Orders />} />
+          <Route path='addItem' element={<AddItems />} />
           <Route path='reviews' element={<Reviews />} />
           <Route path='allItems' element={<Items />} />
           <Route path='users' element={<Users />} />

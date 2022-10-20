@@ -3,22 +3,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import FoodCard from '../../features/foods/FoodCard';
 import { fetchFoods } from '../../features/foods/foodSlice';
 
-const ShowFoods = ({category}) => {
-    const {isLoading,foods,error}= useSelector(state=>state.foods)
-    const dispatch= useDispatch()
+const ShowFoods = ({ category }) => {
+    const { isLoading, foods, error } = useSelector(state => state.foods)
+    const dispatch = useDispatch()
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(fetchFoods(category))
-    },[category])
-    
-    if(isLoading ){
+    }, [category])
+
+    if (isLoading) {
         return <p>Loading......</p>
     }
-    console.log(foods);
     return (
         <>
             <div className='mt-4 gap-10 flex flex-col'>
-                {foods.map(food=><FoodCard/>)}
+                {foods.map(food => <FoodCard />)}
             </div>
         </>
     );
