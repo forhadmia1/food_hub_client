@@ -6,6 +6,8 @@ import { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import swal from 'sweetalert';
+import { signOut } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
 const customStyles = {
     content: {
@@ -21,8 +23,9 @@ const customStyles = {
 
 const ReviewModal = ({ modalIsOpen, setIsOpen, reload, setReload }) => {
     const [user] = useAuthState(auth)
+    const navigate = useNavigate()
     const [error, setError] = useState(null)
-    const [review, setReview] = useState({ name: user.displayName, email: user.email, rating: 0, comment: '' })
+    const [review, setReview] = useState({ name: user.displayName, image: user.photoURL, email: user.email, rating: 0, comment: '' })
 
     const handleRating = (value) => {
         const newReview = { ...review };
@@ -40,10 +43,15 @@ const ReviewModal = ({ modalIsOpen, setIsOpen, reload, setReload }) => {
             fetch('http://localhost:5000/api/v1/review', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
                 },
                 body: JSON.stringify(review)
             }).then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    signOut(auth)
+                    navigate('/login')
+                }
                 if (res.status === 200) {
                     swal({
                         title: "Thank You!",

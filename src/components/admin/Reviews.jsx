@@ -1,16 +1,30 @@
+import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import Rating from 'react-rating';
+import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
+import auth from '../../firebase.init';
 
 
 
 const Reviews = () => {
+    const navigate = useNavigate()
     const [reviews, setReviews] = useState([])
     const [reload, setReload] = useState(false)
     useEffect(() => {
-        fetch('http://localhost:5000/api/v1/review/all')
-            .then(res => res.json())
+        fetch('http://localhost:5000/api/v1/review/all', {
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    signOut(auth)
+                    navigate('/login')
+                }
+                return res.json()
+            })
             .then(data => setReviews(data))
     }, [reload])
 
@@ -25,8 +39,15 @@ const Reviews = () => {
             .then((willDelete) => {
                 if (willDelete) {
                     fetch(`http://localhost:5000/api/v1/review/${id}`, {
-                        method: 'PUT'
+                        method: 'PUT',
+                        headers: {
+                            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                        }
                     }).then(res => {
+                        if (res.status === 401 || res.status === 403) {
+                            signOut(auth)
+                            navigate('/login')
+                        }
                         if (res.status === 200) {
                             swal({
                                 title: "Great!",
@@ -56,8 +77,16 @@ const Reviews = () => {
             .then((willDelete) => {
                 if (willDelete) {
                     fetch(`http://localhost:5000/api/v1/review/${id}`, {
-                        method: 'DELETE'
+                        method: 'DELETE',
+                        headers: {
+                            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                        }
                     }).then(res => {
+                        if (res.status === 401 || res.status === 403) {
+                            signOut(auth)
+                            navigate('/login')
+                        }
+
                         if (res.status === 200) {
                             swal({
                                 title: "Great!",

@@ -33,9 +33,9 @@ const Navbar = () => {
                     <ul tabIndex="0" className="menu menu-compact dropdown-content mt-2 p-2  shadow bg-base-100 rounded-box w-48 ml-[-140px]">
                         <li><Link to={'/'}>Home</Link></li>
                         <li><Link to={'/menu'}>Menu</Link></li>
-                        <li><Link to={'/'}>About</Link></li>
-                        <li><Link to={'/'}>Contact</Link></li>
-                        <li><Link to={'/'}>Order</Link></li>
+                        <li><Link to={'/about'}>About</Link></li>
+                        <li><Link to={'/contact'}>Contact</Link></li>
+                        <li><Link to={'/order'}>Order</Link></li>
                         <li><Link to={'/admin'}>Dashboard</Link></li>
                         {user ? <li><button>SignOut</button></li> : <li><Link to={'/login'}>Login</Link></li>}
                     </ul>
@@ -45,8 +45,8 @@ const Navbar = () => {
                 <ul className={NavbarCss.link} >
                     <li ><Link to={'/'}>Home</Link></li>
                     <li><Link to={'/menu'}>Menu</Link></li>
-                    <li><Link to={'/'}>About</Link></li>
-                    <li><Link to={'/'}>Contact</Link></li>
+                    <li><Link to={'/about'}>About</Link></li>
+                    <li><Link to={'/contact'}>Contact</Link></li>
                     <li><Link to={'/order'}>Order</Link></li>
                     <li><Link to={'/admin'}>Dashboard</Link></li>
                     {user ? <li><button onClick={() => signOut(auth)}>SignOut</button></li> : <li><Link to={'/login'}>Login</Link></li>}

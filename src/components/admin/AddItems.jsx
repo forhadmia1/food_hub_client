@@ -1,16 +1,51 @@
+import { signOut } from 'firebase/auth';
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
+import auth from '../../firebase.init';
 
 const AddItems = () => {
+    const navigate = useNavigate()
     const [image, setImage] = useState('')
+    const [category, setCategory] = useState('desserts')
     const handleForm = (e) => {
         e.preventDefault()
         const name = e.target.name.value;
-        const price = e.target.gender.value;
-        const description = e.target.father_name.value;
-        const category = e.target.mother_name.value;
-        const image = e.target.birth_date.value;
+        const price = e.target.price.value;
+        const description = e.target.description.value;
         const food = { name, price, description, category, image };
+        fetch(`http://localhost:5000/api/v1/foods/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify(food)
+        }).then(res => {
+            if (res.status === 401 || res.status === 403) {
+                signOut(auth)
+                navigate('/login')
+            }
+            if (res.status === 200) {
+                swal({
+                    title: "Great!",
+                    text: "Successfully add food",
+                    icon: "success",
+                    buttons: false,
+                    timer: 2000
+                });
+            } else {
+                swal({
+                    title: "Opps!",
+                    text: "someting went wrong",
+                    icon: "warning",
+                    buttons: false,
+                    timer: 2000
+                });
+            }
+            e.target.reset()
+            setImage('')
+        })
     }
     const handleImage = async (e) => {
         const image = e.target.files[0];
@@ -44,14 +79,22 @@ const AddItems = () => {
                     <span className='w-48 text-lg font-semibold'>Name:</span> <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name='name' required />
                 </div>
                 <div className='flex mt-2 items-center'>
-                    <span className='w-48 text-lg font-semibold'>Price:</span> <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" name='gender' required />
+                    <span className='w-48 text-lg font-semibold'>Price:</span> <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" name='price' required />
                 </div>
                 <div className='flex mt-2 items-center'>
-                    <span className='w-48 text-lg font-semibold'>Category:</span> <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name='father_name' required />
+                    <span className='w-48 text-lg font-semibold'>Categories:</span>
+                    <select onChange={(e) => setCategory(e.target.value)} class="bg-gray-50 border border-gray-300 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option selected >Choose an option</option>
+                        <option value="desserts">Desserts</option>
+                        <option value="dinner">Dinner</option>
+                        <option value="drink">Drink</option>
+                        <option value="meat">Meat</option>
+                        <option value="starters">Starters</option>
+                    </select>
                 </div>
                 <div className='flex mt-2 items-start'>
                     <span className='w-48 text-lg font-semibold'>Description:</span>
-                    <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="" id="" cols="30" rows="5"></textarea>
+                    <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="description" id="" cols="30" rows="5"></textarea>
                 </div>
                 <div className='mt-4 flex gap-5 justify-end'>
                     <button type='submit' className={`px-4 py-1 font-semibold bg-amber-400 hover:bg-amber-500 rounded`}>Add Food</button>

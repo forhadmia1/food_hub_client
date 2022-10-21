@@ -1,14 +1,28 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
+import auth from '../../firebase.init';
 
 const Users = () => {
+    const navigate = useNavigate()
     const [users, setUsers] = useState([])
     const [reload, setReload] = useState(false)
     useEffect(() => {
-        fetch('http://localhost:5000/api/v1/user/all')
-            .then(res => res.json())
+        fetch('http://localhost:5000/api/v1/user/all', {
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    signOut(auth)
+                    navigate('/login')
+                }
+                return res.json()
+            })
             .then(data => setUsers(data))
     }, [reload])
 
@@ -23,8 +37,15 @@ const Users = () => {
             .then((willDelete) => {
                 if (willDelete) {
                     fetch(`http://localhost:5000/api/v1/user/create-admin?email=${email}`, {
-                        method: 'PUT'
+                        method: 'PUT',
+                        headers: {
+                            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                        }
                     }).then(res => {
+                        if (res.status === 401 || res.status === 403) {
+                            signOut(auth)
+                            navigate('/login')
+                        }
                         if (res.status === 200) {
                             swal({
                                 title: "Great!",
@@ -54,8 +75,15 @@ const Users = () => {
             .then((willDelete) => {
                 if (willDelete) {
                     fetch(`http://localhost:5000/api/v1/user?email=${email}`, {
-                        method: 'DELETE'
+                        method: 'DELETE',
+                        headers: {
+                            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                        }
                     }).then(res => {
+                        if (res.status === 401 || res.status === 403) {
+                            signOut(auth)
+                            navigate('/login')
+                        }
                         if (res.status === 200) {
                             swal({
                                 title: "Great!",

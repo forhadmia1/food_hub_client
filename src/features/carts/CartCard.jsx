@@ -8,7 +8,7 @@ const CartCard = ({ item }) => {
         <div className='flex px-2'>
             <div className="avatar">
                 <div className="w-20 rounded">
-                    <img src="https://placeimg.com/192/192/people" alt='' />
+                    <img src={item?.image} alt='' />
                 </div>
             </div>
             <div className='ml-3'>

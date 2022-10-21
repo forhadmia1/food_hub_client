@@ -7,6 +7,8 @@ import {
 import '../Styles/Payment.css'
 import swal from 'sweetalert';
 import { useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import auth from "../firebase.init";
 
 export default function CheckoutForm({ order, setIsOpen }) {
     const stripe = useStripe();
@@ -19,10 +21,20 @@ export default function CheckoutForm({ order, setIsOpen }) {
     useEffect(() => {
         fetch("http://localhost:5000/api/v1/order/create-payment-intent", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+                "Content-Type": "application/json",
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+
+            },
             body: JSON.stringify({ totalAmount: order.totalAmount }),
         })
-            .then((res) => res.json())
+            .then((res) => {
+                if (res.status === 401 || res.status === 403) {
+                    signOut(auth)
+                    navigate('/login')
+                }
+                return res.json()
+            })
             .then((data) => setClientSecret(data.clientSecret));
     }, [order.totalAmount]);
 
@@ -69,10 +81,15 @@ export default function CheckoutForm({ order, setIsOpen }) {
             fetch(`http://localhost:5000/api/v1/order/`, {
                 method: 'POST',
                 headers: {
-                    'content-type': 'application/json'
+                    'content-type': 'application/json',
+                    'authorization': `Bearer ${localStorage.getItem('accessToken')}`
                 },
                 body: JSON.stringify(newOrder)
             }).then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    signOut(auth)
+                    navigate('/login')
+                }
                 if (res.status === 200) {
                     setIsOpen(false)
                     swal({

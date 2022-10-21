@@ -12,7 +12,7 @@ const OrderItemRow = ({ item }) => {
                 <div className='flex gap-1 items-center ml-2 py-2'>
                     <div className="avatar">
                         <div className="w-16 rounded">
-                            <img src="https://placeimg.com/192/192/people" alt='' />
+                            <img src={item?.image} alt='' />
                         </div>
                     </div>
                     <h2 className='md:text-2xl text-xl'>{item.name}</h2>

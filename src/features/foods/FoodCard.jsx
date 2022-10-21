@@ -25,10 +25,10 @@ const FoodCard = ({ food }) => {
         <div className='flex px-2'>
             <div className="avatar">
                 <div className="w-24 rounded">
-                    <img src="https://placeimg.com/192/192/people" alt='' />
+                    <img src={food?.image} alt='' />
                 </div>
             </div>
-            <div className='ml-3'>
+            <div className='ml-3 w-full'>
                 <div className='flex justify-between items-center'>
                     <h2 className='text-cl md:text-2xl'>{food.name}</h2>
                     <p className='text-xl font-bold'>${food.price}</p>

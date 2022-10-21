@@ -1,19 +1,28 @@
+import { signOut } from 'firebase/auth';
 import React, { useState } from 'react';
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
+import auth from '../../firebase.init';
 
 const Order = ({ item, reload, setReload }) => {
+    const navigate = useNavigate()
     const [isVisible, setIsVisible] = useState(false)
     const handleDeliver = (id) => {
-        fetch(`http://localhost:5000/api/v1/order/${id}`, {
+        fetch(`http://localhost:5000/api/v1/order/admin/${id}`, {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
             },
             body: JSON.stringify({
                 orderStatus: "shipped"
             })
         }).then(res => {
+            if (res.status === 401 || res.status === 403) {
+                signOut(auth)
+                navigate('/login')
+            }
             if (res.status === 200) {
                 swal({
                     title: "Great!",
@@ -38,8 +47,15 @@ const Order = ({ item, reload, setReload }) => {
             .then((willDelete) => {
                 if (willDelete) {
                     fetch(`http://localhost:5000/api/v1/order/${id}`, {
-                        method: 'DELETE'
+                        method: 'DELETE',
+                        headers: {
+                            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                        }
                     }).then(res => {
+                        if (res.status === 401 || res.status === 403) {
+                            signOut(auth)
+                            navigate('/login')
+                        }
                         if (res.status === 200) {
                             swal({
                                 title: "Great!",
@@ -92,7 +108,9 @@ const Order = ({ item, reload, setReload }) => {
                             </thead>
                             <tbody>
                                 {
-                                    item?.item?.map(product => <tr className='border-t-2'>
+                                    item?.item?.map((product, index) => <tr
+                                        key={index}
+                                        className='border-t-2'>
                                         <td>{product.name}</td>
                                         <td>{product.category}</td>
                                         <td>{product.price}</td>

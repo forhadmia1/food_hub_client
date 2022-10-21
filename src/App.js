@@ -16,6 +16,8 @@ import Reviews from './components/admin/Reviews';
 import Items from './components/admin/Items';
 import Users from './components/admin/Users';
 import RequiteAdmin from './components/authentication/RequireAdmin';
+import AboutPage from './Pages/AboutPage';
+import ContactPage from './Pages/ContactPage';
 
 
 function App() {
@@ -31,6 +33,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/menu" element={<MenuPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
         <Route path="/order" element={
           <RequiteAuth>
             <AllOrderPage />

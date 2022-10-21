@@ -1,10 +1,14 @@
+import { signOut } from 'firebase/auth';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import { fetchFoods } from '../../features/foods/foodSlice';
+import auth from '../../firebase.init';
 
 const Items = () => {
+    const navigate = useNavigate()
     const [reload, setReload] = useState(false)
     const { isLoading, allFoods } = useSelector(state => state.foods)
     const dispatch = useDispatch()
@@ -28,8 +32,15 @@ const Items = () => {
             .then((willDelete) => {
                 if (willDelete) {
                     fetch(`http://localhost:5000/api/v1/foods/${id}`, {
-                        method: 'DELETE'
+                        method: 'DELETE',
+                        headers: {
+                            'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                        }
                     }).then(res => {
+                        if (res.status === 401 || res.status === 403) {
+                            signOut(auth)
+                            navigate('/login')
+                        }
                         if (res.status === 200) {
                             swal({
                                 title: "Great!",
@@ -54,7 +65,7 @@ const Items = () => {
                 className='flex px-2  mt-6 '>
                 <div className="avatar">
                     <div className="w-24 rounded">
-                        <img src="https://placeimg.com/192/192/people" alt='' />
+                        <img src={food?.image} alt='' />
                     </div>
                 </div>
                 <div className='ml-3 w-full'>

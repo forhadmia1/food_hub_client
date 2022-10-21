@@ -1,22 +1,30 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
 import { useState } from 'react';
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
+import auth from '../../firebase.init';
 import ReviewModal from './ReviewModal';
 
 const OrderItem = ({ item, reload, setReload }) => {
+    const navigate = useNavigate()
     const [modalIsOpen, setIsOpen] = useState(false);
-    console.log(item);
     const [isVisible, setIsVisible] = useState(false)
     const orderHandle = (id) => {
         fetch(`http://localhost:5000/api/v1/order/${id}`, {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
             },
             body: JSON.stringify({
                 orderStatus: "complete"
             })
         }).then(res => {
+            if (res.status === 401 || res.status === 403) {
+                signOut(auth)
+                navigate('/login')
+            }
             if (res.status === 200) {
                 setIsOpen(true);
             }
