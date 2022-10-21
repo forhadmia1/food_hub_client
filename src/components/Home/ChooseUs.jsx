@@ -7,7 +7,7 @@ const ChooseUs = () => {
     return (
         <div className="px-4">
             <h2 className='text-4xl font-bold text-center mt-24'>Why Choose us</h2>
-            <p className='text-xl text-center mt-6'>We offer you the biggest choice from over 50 different cuisines. <br />
+            <p className='text-md lg:text-xl text-center mt-6'>We offer you the biggest choice from over 50 different cuisines. <br />
                 We deliver great-tasting dishes anytime and for every occasion.</p>
             <div className='grid md:grid-cols-3 justify-items-center gap-4'>
                 <div className="card  bg-base-100 ">

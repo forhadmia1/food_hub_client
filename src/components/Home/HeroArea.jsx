@@ -6,13 +6,13 @@ const HeroArea = () => {
     const navigate = useNavigate()
     return (
         <div className=''>
-            <div className="grid grid-cols-1 md:grid-cols-2 relative">
-                <div className="hero-content justify-start md:pl-24 pl-4 text-neutral-content md:bg-white absolute md:static top-48 p-0">
+            <div className="grid grid-cols-2">
+                <div className="hero-content justify-start md:pl-24 pl-4 text-neutral-content lg:bg-white">
                     <div className="max-w-md text-slate-800">
-                        <h1 className="mb-5 text-5xl font-bold">Combo Triple Hamburger with coke</h1>
+                        <h1 className="mb-5 text-xl lg:text-5xl font-bold">Combo Triple Hamburger with coke</h1>
                         <p className="mb-5 font-light">Today only: order the hamburger with free coke.</p>
-                        <div className='flex items-center gap-10'>
-                            <p className='text-2xl font-semibold'>$<span className='text-4xl font-bold'>14.</span>99</p>
+                        <div className='flex lg:items-center gap-5 lg:gap-10 flex-col lg:flex-row'>
+                            <p className='text-xl lg:text-2xl font-semibold'>$<span className='text-2xl lg:text-4xl font-bold'>14.</span>99</p>
                             <button onClick={() => navigate('/menu')} className="btn btn-primary rounded-full px-8 cursor-pointer">View Menu</button>
                         </div>
                     </div>

@@ -30,7 +30,7 @@ const AllOrderPage = () => {
     }, [reload, user])
     return (
         <Layout>
-            <div className='px-24'>
+            <div className='lg:px-24'>
                 {data.map(d => <OrderItem
                     item={d}
                     reload={reload}
