@@ -39,10 +39,7 @@ function App() {
           <RequiteAuth>
             <AllOrderPage />
           </RequiteAuth>} />
-        <Route path="/cart" element={
-          <RequiteAuth>
-            <OrderPage />
-          </RequiteAuth>} />
+        <Route path="/cart" element={<OrderPage />} />
         <Route path="/admin" element={
           <RequiteAdmin>
             <AdminPage />

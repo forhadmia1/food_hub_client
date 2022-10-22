@@ -11,14 +11,9 @@ const FoodCard = ({ food }) => {
     const navigate = useNavigate()
 
     const handleAddToCart = () => {
-        if (!user) {
-            navigate('/login')
-        } else {
-            dispatch(addToCart({
-                ...food
-            }))
-        }
-
+        dispatch(addToCart({
+            ...food
+        }))
     }
 
     return (

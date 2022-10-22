@@ -1,23 +1,32 @@
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout';
-import Loading from '../components/Loading';
 import OrderItemRow from '../components/OrderItemRow';
 import OrderModal from '../components/OrderModal';
 import { getTotal } from '../features/carts/cartSlice';
+import auth from '../firebase.init';
 
 const OrderPage = () => {
+    const [user] = useAuthState(auth)
     const [modalIsOpen, setIsOpen] = useState(false);
-    const carts = useSelector(state => state.carts)
+    const { carts, quantity, TotalAmount } = useSelector(state => state.carts)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
 
     useEffect(() => {
         dispatch(getTotal())
     }, [carts, dispatch])
 
-    if (carts.isLoading) {
-        return <Loading />
+
+    const handleCheckout = () => {
+        if (!user) {
+            navigate('/login')
+        } else {
+            setIsOpen(true)
+        }
     }
 
     return (
@@ -34,7 +43,7 @@ const OrderPage = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {carts.carts.map(item => <OrderItemRow
+                            {carts.map(item => <OrderItemRow
                                 key={item.id}
                                 item={item}
                             ></OrderItemRow>)}
@@ -45,7 +54,7 @@ const OrderPage = () => {
                     <h2 className='text-2xl font-semibold text-center'>Submit Order</h2>
                     <div className='flex justify-between mt-5 px-3'>
                         <h2 className='text-xl font-semibold'>Subtotal</h2>
-                        <p className='font-semibold'>${carts.TotalAmount}</p>
+                        <p className='font-semibold'>${TotalAmount}</p>
                     </div>
                     <div className='flex justify-between mt-10 mb-2 px-3'>
                         <h2 className='text-lg font-semibold'>Shipping</h2>
@@ -54,10 +63,10 @@ const OrderPage = () => {
                     <hr />
                     <div className='flex justify-between mt-2 px-3'>
                         <h2 className='text-2xl font-semibold'>Total</h2>
-                        <p className='font-semibold'>${carts.TotalAmount}</p>
+                        <p className='font-semibold'>${TotalAmount}</p>
                     </div>
                     <div className='flex justify-center items-center mt-5'>
-                        <button onClick={() => setIsOpen(true)} className='bg-yellow-400 px-6 py-2 rounded text-white font-semibold hover:bg-yellow-500'>Procced to checkout</button>
+                        <button onClick={handleCheckout} className='bg-yellow-400 px-6 py-2 rounded text-white font-semibold hover:bg-yellow-500 disabled:bg-slate-600 disabled:text-slate-400' {...quantity < 1 && { disabled: true }}>Procced to checkout</button>
                     </div>
                 </div>
             </div>

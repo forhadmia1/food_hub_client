@@ -35,10 +35,14 @@ const AllOrderPage = () => {
     if (loading) {
         return <Loading />
     }
+
+
     return (
         <Layout>
             <div className='lg:px-24'>
-                {data.map(d => <OrderItem
+                {data.length < 1 ? <div className='flex justify-center w-full mt-20'>
+                    <span className='text-xl text-center'>No Order at this moment!</span>
+                </div> : data.map(d => <OrderItem
                     item={d}
                     reload={reload}
                     setReload={setReload}

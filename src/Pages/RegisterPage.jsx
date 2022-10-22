@@ -95,7 +95,7 @@ const RegisterPage = () => {
                             Already have an account?
                             <Link to="/login" className="no-underline border-b border-blue text-blue">
                                 <span className='font-bold ml-2 '>
-                                    Log in
+                                    Sign Up
                                 </span>
                             </Link>
                         </div>
