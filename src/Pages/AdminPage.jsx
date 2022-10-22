@@ -1,13 +1,17 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { AiOutlineBars } from 'react-icons/ai';
 import { Link, Outlet } from 'react-router-dom';
 import auth from '../firebase.init';
 
 const AdminPage = () => {
-    const [user] = useAuthState(auth)
+    const [user, loading] = useAuthState(auth)
+    if (loading) {
+        return <p>Loading...</p>
+    }
     return (
         <div>
-            <div className='flex justify-between px-10 py-2 bg-slate-500 text-white items-center'>
+            <div className='flex justify-between px-5 lg:px-10 py-2 bg-slate-500 text-white items-center'>
                 <div>
                     <Link to={'/'}>
                         <p className='text-3xl font-bold'>FOOD</p>
@@ -19,15 +23,14 @@ const AdminPage = () => {
                             <img src={user.photoURL ? user.photoURL : 'https://img.freepik.com/free-vector/illustration-user-avatar-icon_53876-5907.jpg?w=740&t=st=1666291685~exp=1666292285~hmac=ea6fe0eaacd4df0db898dd8126b75c9e0b4a6044ad46cc7eb7c7853f95825d71'} alt='' />
                         </div>
                     </div>
-                    <p>{user.displayName}</p>
+                    <p className='hidden lg:block'>{user.displayName}</p>
+                    <label htmlFor="my-drawer-2" className="bg-white text-black p-3 rounded text-xl drawer-button lg:hidden"><AiOutlineBars /></label>
                 </div>
             </div>
             <div className="drawer drawer-mobile">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col items-center justify-start">
                     <Outlet />
-                    <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
-
                 </div>
                 <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>

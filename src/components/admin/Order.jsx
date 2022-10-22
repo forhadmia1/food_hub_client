@@ -78,21 +78,21 @@ const Order = ({ item, reload, setReload }) => {
             <div className='flex items-start gap-2'>
                 <div>{!isVisible ? <MdKeyboardArrowDown onClick={() => setIsVisible(true)} className='text-2xl' /> : <MdKeyboardArrowUp onClick={() => setIsVisible(false)} className='text-2xl' />}</div>
                 <div className='w-full'>
-                    <div className='flex justify-between w-full'>
+                    <div className='flex justify-between w-full lg:flex-row flex-col'>
                         <div>
-                            <p className='text-center font-semibold'>Order Id</p>
+                            <p className='text-start lg:text-center font-semibold'>Order Id</p>
                             <p>{item._id}</p>
                         </div>
                         <div>
-                            <p className='text-center font-semibold'>User Name</p>
+                            <p className='text-start lg:text-center font-semibold'>User Name</p>
                             <p>{item.name}</p>
                         </div>
                         <div>
-                            <p className='text-center font-semibold'>Total Price</p>
+                            <p className='text-start lg:text-center font-semibold'>Total Price</p>
                             <p>{item.totalAmount}</p>
                         </div>
                         <div>
-                            <p className='text-center font-semibold'>Transection Id</p>
+                            <p className='text-start lg:text-center font-semibold'>Transection Id</p>
                             <p className='text-orange-500 font-bold'>{item.transectionId}</p>
                         </div>
                     </div>
@@ -120,10 +120,12 @@ const Order = ({ item, reload, setReload }) => {
                             </tbody>
                         </table>
                     </div>
-                    <div className='flex gap-5 items-center mt-5'>
+                    <div className='flex gap-5 lg:items-center mt-5 lg:flex-row flex-col'>
                         <p className='font-bold'>Status:{item.orderStatus ? <span className={`font-bold ml-2 ${item.orderStatus === 'complete' ? 'text-green-500' : 'text-red-500'}`}>{item.orderStatus}</span> : <span className='font-bold ml-2 text-red-500'>Pending</span>}</p>
-                        <button onClick={() => handleDeliver(item._id)} className={`bg-orange-500 px-4 py-1 rounded-full text-white hover:bg-orange-600  disabled:bg-slate-600 disabled:text-slate-400`} {...item.orderStatus && { disabled: true }}>Deliver</button>
-                        <button onClick={() => handleDelete(item._id)} className={`bg-red-500 px-4 py-1 rounded-full text-white hover:bg-red-600`}>Delete</button>
+                        <div className='flex gap-5 items-center'>
+                            <button onClick={() => handleDeliver(item._id)} className={`bg-orange-500 px-4 py-1 rounded-full text-white hover:bg-orange-600  disabled:bg-slate-600 disabled:text-slate-400`} {...item.orderStatus && { disabled: true }}>Deliver</button>
+                            <button onClick={() => handleDelete(item._id)} className={`bg-red-500 px-4 py-1 rounded-full text-white hover:bg-red-600`}>Delete</button>
+                        </div>
                     </div>
                 </div>
             </div>

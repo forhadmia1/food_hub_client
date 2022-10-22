@@ -22,8 +22,6 @@ const Testimonial = () => {
       .then(data => setReviews(data))
   }, [])
 
-  console.log(reviews);
-
   return (
     <section className='mt-10'>
       <h2 className='text-center md:text-5xl text-3xl text-slate-700 font-bold'>Our Happy Clients Says</h2>
@@ -51,9 +49,9 @@ const Testimonial = () => {
             <div className="blockquote">
               <h1>{review.comment}</h1>
               <div className='flex pl-32 items-center mt-2 gap-3'>
-                <img className='w-16 h-16 rounded-full' src={review.iamge ? review.image : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} alt="" />
+                <img className='lg:w-16 lg:h-16 w-12 h-12 rounded-full' src={review.iamge ? review.image : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"} alt="" />
                 <div>
-                  <h2 className='text-xl font-semibold'>{review.name}</h2>
+                  <h2 className='text-md lg:text-xl font-semibold'>{review.name}</h2>
                   <div>
                     <Rating
                       className='text-yellow-400 text-xl'

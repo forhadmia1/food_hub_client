@@ -104,8 +104,8 @@ const Reviews = () => {
             });
     }
     return (
-        <div className='w-full px-5 py-5'>
-            <table className='w-full border-2 border-slate-300 rounded'>
+        <div className='w-full px-5 py-5 overflow-x-scroll'>
+            <table style={{ minWidth: '600px' }} className='lg:w-full border-2 border-slate-300 rounded'>
                 <thead className='bg-yellow-500'>
                     <tr>
                         <th className='text-start  py-1 px-2'>Name</th>
@@ -130,7 +130,7 @@ const Reviews = () => {
                                 />
                             </td>
                             <td className={`py-1 px-2`}>{review.comment}</td>
-                            <td className='py-1 px-2 flex gap-2'>
+                            <td className='py-1 px-2 flex gap-2 lg:flex-row flex-col'>
                                 <button onClick={() => handleAprroved(review._id)} className='px-2 py-1 bg-orange-400 hover:bg-orange-500 rounded disabled:bg-slate-600' {...review.approved && { disabled: true }}>Approved</button>
 
                                 <button onClick={() => handleDelete(review._id)} className='px-2 py-1 text-white bg-red-500 hover:bg-red-600 rounded ' >Delete</button>

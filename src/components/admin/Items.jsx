@@ -62,7 +62,7 @@ const Items = () => {
         <div className='w-full px-5 pb-5'>
             {allFoods.map(food => <div
                 key={food._id}
-                className='flex px-2  mt-6 '>
+                className='flex px-2  mt-6 items-start'>
                 <div className="avatar">
                     <div className="w-24 rounded">
                         <img src={food?.image} alt='' />

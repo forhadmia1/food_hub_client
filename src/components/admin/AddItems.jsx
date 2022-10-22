@@ -73,7 +73,7 @@ const AddItems = () => {
                         </label>
                 }
             </div>
-            <form onSubmit={handleForm} className='md:w-2/4 w-full px-2 pb-4'>
+            <form onSubmit={handleForm} className='md:w-2/4 w-full px-4 pb-4'>
                 <h2 className='text-3xl font-bold my-4 text-slate-700'>Add New Food</h2>
                 <div className='flex mt-2 items-center'>
                     <span className='w-48 text-lg font-semibold'>Name:</span> <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name='name' required />

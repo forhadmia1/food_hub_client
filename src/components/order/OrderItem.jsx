@@ -31,25 +31,25 @@ const OrderItem = ({ item, reload, setReload }) => {
         })
     }
     return (
-        <div className='bg-yellow-400 mt-5 rounded-md px-3 py-5'>
+        <div className='bg-yellow-400 mt-5 rounded-md px-3 py-5 mx-4'>
             <div className='flex items-start gap-2'>
                 <div>{!isVisible ? <MdKeyboardArrowDown onClick={() => setIsVisible(true)} className='text-2xl' /> : <MdKeyboardArrowUp onClick={() => setIsVisible(false)} className='text-2xl' />}</div>
                 <div className='w-full'>
-                    <div className='flex justify-between w-full'>
+                    <div className='flex lg:justify-between w-full flex-col lg:flex-row'>
                         <div>
-                            <p className='text-center font-semibold'>Order Id</p>
+                            <p className='text-start lg:text-center font-semibold'>Order Id</p>
                             <p>{item._id}</p>
                         </div>
                         <div>
-                            <p className='text-center font-semibold'>User Name</p>
+                            <p className='text-start lg:text-center font-semibold'>User Name</p>
                             <p>{item.name}</p>
                         </div>
                         <div>
-                            <p className='text-center font-semibold'>Total Price</p>
+                            <p className='text-start lg:text-center font-semibold'>Total Price</p>
                             <p>{item.totalAmount}</p>
                         </div>
                         <div>
-                            <p className='text-center font-semibold'>Transection Id</p>
+                            <p className='text-start lg:text-center font-semibold'>Transection Id</p>
                             <p className='text-orange-500 font-bold'>{item.transectionId}</p>
                         </div>
                     </div>

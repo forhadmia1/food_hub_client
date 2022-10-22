@@ -24,7 +24,7 @@ const Navbar = () => {
                 </Link>
                 <div className="dropdown flex items-center gap-5">
                     <div className='relative md:hidden block'>
-                        <Link to={'/order'}><HiShoppingBag className='text-3xl' /></Link>
+                        <Link to={'/cart'}><HiShoppingBag className='text-3xl' /></Link>
                         <span className='absolute -top-2 px-3 py-1 rounded-full bg-red-500 left-2/4 text-white font-bold'>{quantity}</span>
                     </div>
                     <label tabIndex="0" className="btn btn-ghost lg:hidden">

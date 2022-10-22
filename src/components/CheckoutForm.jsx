@@ -36,7 +36,7 @@ export default function CheckoutForm({ order, setIsOpen }) {
                 return res.json()
             })
             .then((data) => setClientSecret(data.clientSecret));
-    }, [order.totalAmount]);
+    }, [order.totalAmount, navigate]);
 
 
     const handleSubmit = async (e) => {

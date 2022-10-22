@@ -22,8 +22,8 @@ const OrderPage = () => {
     return (
         <Layout>
             <div className='grid md:grid-cols-5 grid-cols-1 w-full gap-5 mt-5 md:px-24 items-start px-4'>
-                <div className='col-span-3 bg-slate-300 bg-opacity-80 rounded '>
-                    <table className='w-full'>
+                <div className='col-span-3 bg-slate-300 bg-opacity-80 rounded w-full overflow-x-scroll lg:overflow-hidden'>
+                    <table style={{ minWidth: '500px' }} className='lg:w-full '>
                         <thead>
                             <tr>
                                 <th className='py-2'>Item</th>

@@ -11,7 +11,8 @@ import { useNavigate } from 'react-router-dom';
 
 const customStyles = {
     content: {
-        width: '30%',
+        minWidth: '30%',
+        maxWidth: '95%',
         top: '50%',
         left: '50%',
         right: 'auto',
