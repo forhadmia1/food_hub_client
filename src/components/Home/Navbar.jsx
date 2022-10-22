@@ -7,8 +7,10 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { signOut } from 'firebase/auth';
 import { HiShoppingBag } from 'react-icons/hi';
 import { useSelector } from 'react-redux';
+import useAdmin from '../../hooks/useAdmin';
 
 const Navbar = () => {
+    const [admin] = useAdmin()
     const [user] = useAuthState(auth);
     const { quantity } = useSelector(state => state.carts)
 
@@ -32,7 +34,7 @@ const Navbar = () => {
                         <li><Link to={'/about'}>About</Link></li>
                         <li><Link to={'/contact'}>Contact</Link></li>
                         <li><Link to={'/order'}>Order</Link></li>
-                        <li><Link to={'/admin'}>Dashboard</Link></li>
+                        {admin && <li><Link to={'/admin'}>Dashboard</Link></li>}
                         {user ? <li><button>SignOut</button></li> : <li><Link to={'/login'}>Login</Link></li>}
                     </ul>
                 </div>
@@ -44,7 +46,7 @@ const Navbar = () => {
                     <li><Link to={'/about'}>About</Link></li>
                     <li><Link to={'/contact'}>Contact</Link></li>
                     <li><Link to={'/order'}>Order</Link></li>
-                    <li><Link to={'/admin'}>Dashboard</Link></li>
+                    {admin && <li><Link to={'/admin'}>Dashboard</Link></li>}
                     {user ? <li><button onClick={() => signOut(auth)}>SignOut</button></li> : <li><Link to={'/login'}>Login</Link></li>}
                     <li><Link to={'/cart'}><HiShoppingBag className='text-3xl relative' /></Link>
                         <span className='absolute -top-2 px-3 py-1 rounded-full bg-red-500 left-2/4 text-white font-bold'>{quantity}</span>
