@@ -17,13 +17,13 @@ const Navbar = () => {
     }
 
     return (
-        <nav className="navbar  bg-base-100 md:px-24 py-4 md:py-5">
+        <nav className="navbar  bg-base-100 lg:px-24 py-4 md:py-5">
             <div className="navbar-start  w-full justify-between px-2 nav-visible">
                 <Link to={'/'}>
                     <img className='w-32 z-50' src={logo} alt="" />
                 </Link>
                 <div className="dropdown flex items-center gap-5">
-                    <div className='relative md:hidden block'>
+                    <div className='relative lg:hidden block'>
                         <Link to={'/cart'}><HiShoppingBag className='text-3xl' /></Link>
                         <span className='absolute -top-2 px-3 py-1 rounded-full bg-red-500 left-2/4 text-white font-bold'>{quantity}</span>
                     </div>

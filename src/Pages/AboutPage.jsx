@@ -12,7 +12,7 @@ const AboutPage = () => {
                 <h2 className='md:text-6xl text-3xl font-bold'>About</h2>
                 <p className='text-md mt-4'>Home{'>'}About</p>
             </div>
-            <div className='grid grid-cols-1 lg:grid-cols-2 gap-10 px-4 lg:px-24 my-20'>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-10 px-4 lg:px-24 my-20'>
                 <div className='order-2'>
                     <h2 className='text-4xl font-semibold'>Begin your journey in a peaceful and relaxing environment</h2>
                     <p className='mt-5 leading-7'>
@@ -26,11 +26,11 @@ const AboutPage = () => {
                     </p>
 
                 </div>
-                <div className='order-1 lg:order-3'>
+                <div className='order-1 md:order-3'>
                     <img src="https://img.freepik.com/free-vector/delivery-service-with-masks-concept_23-2148535315.jpg?w=740&t=st=1666379289~exp=1666379889~hmac=b8dbeef956baf7f902f06e41cf7817608eb9142e096ba75e55c756b9e9c07db1" alt="" />
                 </div>
             </div>
-            <div className='grid grid-cols-1 lg:grid-cols-2 mt-10'>
+            <div className='grid grid-cols-1 md:grid-cols-2 mt-10'>
                 <div>
                     <img src="https://img.freepik.com/free-photo/restaurant-interior_1127-3394.jpg?w=740&t=st=1666378430~exp=1666379030~hmac=f1e020374ff9dcb7fdc45769375bd6a81178b031259dc25ebed6912121ee9b5e" alt="" />
                 </div>

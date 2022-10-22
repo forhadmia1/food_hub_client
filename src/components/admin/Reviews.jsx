@@ -105,7 +105,7 @@ const Reviews = () => {
     }
     return (
         <div className='w-full px-5 py-5 overflow-x-scroll'>
-            <table style={{ minWidth: '600px' }} className='lg:w-full border-2 border-slate-300 rounded'>
+            <table style={{ minWidth: '600px' }} className='w-full border-2 border-slate-300 rounded'>
                 <thead className='bg-yellow-500'>
                     <tr>
                         <th className='text-start  py-1 px-2'>Name</th>

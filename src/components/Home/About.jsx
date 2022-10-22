@@ -15,7 +15,7 @@ const About = () => {
                     <p className='mt-4 text-xl font-thin text-justify'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam nemo esse sed deleniti, qui vel consequuntur tenetur nulla </p>
                     <Link to={'/about'} className='btn bg-white text-black rounded-3xl border-none mt-6'>Learn More</Link>
                 </div>
-                <div className='grid grid-cols-2'>
+                <div className='grid grid-cols-2 gap-5'>
                     <div className='flex items-center'>
                         <div className='md:p-5 p-3 bg-white rounded-full mr-4'>
                             <HiOutlineShoppingBag className='text-3xl' />

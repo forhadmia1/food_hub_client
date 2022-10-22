@@ -13,7 +13,7 @@ const ContactPage = () => {
                 <h2 className='md:text-6xl text-3xl font-bold'>Contact</h2>
                 <p className='text-md mt-4'>Home{'>'}Contact</p>
             </div>
-            <div className='lg:px-24 px-4 flex my-20 flex-col'>
+            <div className='lg:px-24 px-4 flex my-20 flex-col md:flex-row'>
                 <div className='bg-yellow-400 px-10 py-20'>
                     <div className='flex gap-5 items-start '>
                         <ImLocation2 className='text-3xl mt-2' />

@@ -26,9 +26,9 @@ const FoodView = () => {
 
     return (
         <div className='sticky top-10 h-screen'>
-            <div className='grid md:grid-cols-4 gap-5 mt-12 md:mt-16 md:mx-20 px-4 md:px-0'>
+            <div className='grid md:grid-cols-4 gap-5 mt-12 md:mt-16 lg:mx-20 px-4 md:px-0'>
                 <div className='px-6 text-xl font-semibold hidden md:block sticky top-10 h-screen'>
-                    <ul className="menu bg-base-100 w-56 gap-2">
+                    <ul className="menu bg-base-100 w-full gap-2">
                         <li
                             className={` hover:bg-slate-200 px-4 py-2 rounded cursor-pointer ${category === '' && 'bg-slate-200'}`}
                             onClick={() => setCategory('')}
@@ -61,7 +61,7 @@ const FoodView = () => {
                         </li>
                     </ul>
                 </div>
-                <div className='col-span-2'>
+                <div className='lg:col-span-2 md:col-span-3 md:pr-6'>
                     <div className="flex items-center justify-center">
                         <div className="flex border-2 rounded-full w-full px-4">
                             <input onChange={(e) => setKeyword(e.target.value)} type="text" className=" w-full focus:outline-none px-2 py-2" placeholder="Search..." />
@@ -84,7 +84,7 @@ const FoodView = () => {
                             </div>}
                     </div>
                 </div>
-                <div className='px-2 hidden md:block sticky top-10 h-screen'>
+                <div className='px-2 hidden lg:block sticky top-10 h-screen'>
                     <h2 className='text-4xl font-bold'>Your Order</h2>
                     <CartView />
                 </div>

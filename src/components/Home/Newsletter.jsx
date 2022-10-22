@@ -5,7 +5,7 @@ const Newsletter = () => {
         <div className="px-4 py-8 mx-auto bg-[url('/src/assets/banner/bg_subscribe.jpg')]">
             <section className="md:mb-32 mb-10 text-gray-800 text-center">
                 <div className="flex flex-wrap justify-center">
-                    <div className="grow-0 shrink-0 flex-basis w-full lg:w-6/12 px-3">
+                    <div className="grow-0 shrink-0 flex-basis w-full md:w-2/3 lg:w-6/12 px-3">
                         <h2 className="text-2xl md:text-5xl text-white font-bold mb-6 mt-16">Subscribe to the newsletter</h2>
 
                         <p className="text-white text-xl font-thin mb-12">We will write rarely and only high-quality content.</p>
