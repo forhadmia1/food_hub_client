@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import { fetchFoods } from '../../features/foods/foodSlice';
 import auth from '../../firebase.init';
+import Loading from '../Loading';
 
 const Items = () => {
     const navigate = useNavigate()
@@ -18,7 +19,7 @@ const Items = () => {
     }, [reload, dispatch])
 
     if (isLoading) {
-        return <p>Loading.....</p>
+        return <Loading />
     }
 
     const handleDelete = (id) => {
@@ -31,7 +32,7 @@ const Items = () => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`http://localhost:5000/api/v1/foods/${id}`, {
+                    fetch(`https://foodhub-pi.vercel.app/api/v1/foods/${id}`, {
                         method: 'DELETE',
                         headers: {
                             'authorization': `Bearer ${localStorage.getItem('accessToken')}`

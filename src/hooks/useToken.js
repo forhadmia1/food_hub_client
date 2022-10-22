@@ -7,7 +7,7 @@ const useToken = (user) => {
         const data = { name: user?.user?.displayName, email: user?.user?.email };
 
         (async function () {
-            const res = await axios.put('http://localhost:5000/api/v1/user', data)
+            const res = await axios.put('https://foodhub-pi.vercel.app/api/v1/user', data)
             if (res.status === 200) {
                 const data = res.data;
                 localStorage.setItem('accessToken', data.token)

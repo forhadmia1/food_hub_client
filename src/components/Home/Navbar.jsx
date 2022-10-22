@@ -9,12 +9,8 @@ import { HiShoppingBag } from 'react-icons/hi';
 import { useSelector } from 'react-redux';
 
 const Navbar = () => {
-    const [user, loading] = useAuthState(auth);
+    const [user] = useAuthState(auth);
     const { quantity } = useSelector(state => state.carts)
-
-    if (loading) {
-        return <p>Loading.....</p>
-    }
 
     return (
         <nav className="navbar  bg-base-100 lg:px-24 py-4 md:py-5">

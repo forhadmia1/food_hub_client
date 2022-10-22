@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux/es/exports';
 import { useNavigate } from 'react-router-dom';
+import Loading from '../../components/Loading';
 import CartCard from './CartCard';
 
 const CartView = () => {
@@ -8,7 +9,7 @@ const CartView = () => {
     const carts = useSelector(state => state.carts)
 
     if (carts.isLoading) {
-        return <p>Loading....</p>
+        return <Loading />
     }
 
     return (

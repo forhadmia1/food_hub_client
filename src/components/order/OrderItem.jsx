@@ -11,7 +11,7 @@ const OrderItem = ({ item, reload, setReload }) => {
     const [modalIsOpen, setIsOpen] = useState(false);
     const [isVisible, setIsVisible] = useState(false)
     const orderHandle = (id) => {
-        fetch(`http://localhost:5000/api/v1/order/${id}`, {
+        fetch(`https://foodhub-pi.vercel.app/api/v1/order/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

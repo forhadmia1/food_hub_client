@@ -41,7 +41,7 @@ const ReviewModal = ({ modalIsOpen, setIsOpen, reload, setReload }) => {
     const handleSubmit = () => {
         if (review.rating && review.comment) {
             setError('')
-            fetch('http://localhost:5000/api/v1/review', {
+            fetch('https://foodhub-pi.vercel.app/api/v1/review', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

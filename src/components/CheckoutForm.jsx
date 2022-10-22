@@ -19,7 +19,7 @@ export default function CheckoutForm({ order, setIsOpen }) {
     const navigate = useNavigate()
 
     useEffect(() => {
-        fetch("http://localhost:5000/api/v1/order/create-payment-intent", {
+        fetch("https://foodhub-pi.vercel.app/api/v1/order/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -78,7 +78,7 @@ export default function CheckoutForm({ order, setIsOpen }) {
             setErrMessage(error.message);
         } else {
             const newOrder = { ...order, transectionId: paymentIntent.id }
-            fetch(`http://localhost:5000/api/v1/order/`, {
+            fetch(`https://foodhub-pi.vercel.app/api/v1/order/`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',

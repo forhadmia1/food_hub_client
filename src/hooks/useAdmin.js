@@ -13,7 +13,7 @@ const useAdmin = () => {
     useEffect(() => {
         if (user) {
             const email = user.email;
-            fetch(`http://localhost:5000/api/v1/user?email=${email}`, {
+            fetch(`https://foodhub-pi.vercel.app/api/v1/user?email=${email}`, {
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
                 }

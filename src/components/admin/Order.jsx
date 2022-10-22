@@ -9,7 +9,7 @@ const Order = ({ item, reload, setReload }) => {
     const navigate = useNavigate()
     const [isVisible, setIsVisible] = useState(false)
     const handleDeliver = (id) => {
-        fetch(`http://localhost:5000/api/v1/order/admin/${id}`, {
+        fetch(`https://foodhub-pi.vercel.app/api/v1/order/admin/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ const Order = ({ item, reload, setReload }) => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`http://localhost:5000/api/v1/order/${id}`, {
+                    fetch(`https://foodhub-pi.vercel.app/api/v1/order/${id}`, {
                         method: 'DELETE',
                         headers: {
                             'authorization': `Bearer ${localStorage.getItem('accessToken')}`

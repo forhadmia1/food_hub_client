@@ -5,13 +5,15 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
 import auth from '../../firebase.init';
+import Loading from '../Loading';
 
 const Users = () => {
+    const [loading, setLoading] = useState(true)
     const navigate = useNavigate()
     const [users, setUsers] = useState([])
     const [reload, setReload] = useState(false)
     useEffect(() => {
-        fetch('http://localhost:5000/api/v1/user/all', {
+        fetch('https://foodhub-pi.vercel.app/api/v1/user/all', {
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('accessToken')}`
             }
@@ -24,7 +26,12 @@ const Users = () => {
                 return res.json()
             })
             .then(data => setUsers(data))
+        setLoading(false)
     }, [reload])
+
+    if (loading) {
+        return <Loading />
+    }
 
     const handleAdmin = (email) => {
         swal({
@@ -36,7 +43,7 @@ const Users = () => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`http://localhost:5000/api/v1/user/create-admin?email=${email}`, {
+                    fetch(`https://foodhub-pi.vercel.app/api/v1/user/create-admin?email=${email}`, {
                         method: 'PUT',
                         headers: {
                             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -74,7 +81,7 @@ const Users = () => {
         })
             .then((willDelete) => {
                 if (willDelete) {
-                    fetch(`http://localhost:5000/api/v1/user?email=${email}`, {
+                    fetch(`https://foodhub-pi.vercel.app/api/v1/user?email=${email}`, {
                         method: 'DELETE',
                         headers: {
                             'authorization': `Bearer ${localStorage.getItem('accessToken')}`

@@ -17,7 +17,7 @@ const Testimonial = () => {
   const [reviews, setReviews] = useState()
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/v1/review/')
+    fetch('https://foodhub-pi.vercel.app/api/v1/review/')
       .then(res => res.json())
       .then(data => setReviews(data))
   }, [])

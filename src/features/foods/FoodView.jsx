@@ -6,17 +6,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchFoods } from './foodSlice';
 import FoodCard from './FoodCard';
 import Footer from '../../components/Home/Footer';
+import Loading from '../../components/Loading';
 
 
 const FoodView = () => {
     const [category, setCategory] = useState('')
     const [keyword, setKeyword] = useState('')
-    const { isLoading, allFoods, error } = useSelector(state => state.foods)
+    const { isLoading, allFoods } = useSelector(state => state.foods)
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(fetchFoods(`?category=${category}`))
-    }, [category])
+    }, [category, dispatch])
 
     const handleSearch = () => {
         setCategory(null)
@@ -75,7 +76,7 @@ const FoodView = () => {
                         </div>
                     </div>
                     <div className='mb-8'>
-                        {isLoading ? <h1>Loading....</h1> :
+                        {isLoading ? <Loading /> :
                             <div className='mt-4 gap-10 flex flex-col'>
                                 {allFoods.length > 0 ? allFoods.map(food => <FoodCard
                                     key={food._id}

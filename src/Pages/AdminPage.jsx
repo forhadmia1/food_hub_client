@@ -2,13 +2,16 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { AiOutlineBars } from 'react-icons/ai';
 import { Link, Outlet } from 'react-router-dom';
+import Loading from '../components/Loading';
 import auth from '../firebase.init';
 
 const AdminPage = () => {
     const [user, loading] = useAuthState(auth)
+
     if (loading) {
-        return <p>Loading...</p>
+        return <Loading />
     }
+
     return (
         <div>
             <div className='flex justify-between px-5 lg:px-10 py-2 bg-slate-500 text-white items-center'>

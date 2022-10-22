@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Layout from '../components/Layout';
+import Loading from '../components/Loading';
 import OrderItemRow from '../components/OrderItemRow';
 import OrderModal from '../components/OrderModal';
 import { getTotal } from '../features/carts/cartSlice';
@@ -16,7 +17,7 @@ const OrderPage = () => {
     }, [carts, dispatch])
 
     if (carts.isLoading) {
-        return <p>Loading....</p>
+        return <Loading />
     }
 
     return (

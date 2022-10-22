@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import FoodCard from '../../features/foods/FoodCard';
 import { fetchFoods } from '../../features/foods/foodSlice';
+import Loading from '../Loading';
 
 const ShowFoods = ({ category }) => {
     const { isLoading, foods, error } = useSelector(state => state.foods)
@@ -12,7 +13,7 @@ const ShowFoods = ({ category }) => {
     }, [category])
 
     if (isLoading) {
-        return <p>Loading......</p>
+        return <Loading />
     }
     return (
         <>

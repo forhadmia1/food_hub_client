@@ -6,17 +6,19 @@ import { useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout';
+import Loading from '../components/Loading';
 import OrderItem from '../components/order/OrderItem';
 import auth from '../firebase.init';
 
 const AllOrderPage = () => {
+    const [loading, setLoading] = useState(true)
     const navigate = useNavigate()
     const [user] = useAuthState(auth)
     const [reload, setReload] = useState(false)
     const [data, setData] = useState([])
     useEffect(() => {
         (async function () {
-            const res = await axios.get(`http://localhost:5000/api/v1/order?email=${user.email}`, {
+            const res = await axios.get(`https://foodhub-pi.vercel.app/api/v1/order?email=${user.email}`, {
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
                 }
@@ -26,8 +28,13 @@ const AllOrderPage = () => {
                 navigate('/login')
             }
             setData(res.data)
+            setLoading(false)
         })()
     }, [reload, user])
+
+    if (loading) {
+        return <Loading />
+    }
     return (
         <Layout>
             <div className='lg:px-24'>

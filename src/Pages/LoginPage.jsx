@@ -6,6 +6,7 @@ import Layout from '../components/Layout';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import useToken from '../hooks/useToken';
+import Loading from '../components/Loading';
 
 const LoginPage = () => {
     const [customError, setCustomError] = useState('')
@@ -24,7 +25,7 @@ const LoginPage = () => {
     let from = location.state?.from?.pathname || "/";
 
     if (loading || gloading) {
-        <p>Loading....</p>
+        <Loading />
     }
 
     if (token) {

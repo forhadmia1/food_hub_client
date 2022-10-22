@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const fetchFoods = createAsyncThunk('foods/fetchFoods', async (endPoint) => {
-    const res = await axios.get(`http://localhost:5000/api/v1/foods${endPoint}`);
+    const res = await axios.get(`https://foodhub-pi.vercel.app/api/v1/foods${endPoint}`);
     return res.data;
 })
 

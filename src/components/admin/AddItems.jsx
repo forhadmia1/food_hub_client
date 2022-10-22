@@ -14,7 +14,7 @@ const AddItems = () => {
         const price = e.target.price.value;
         const description = e.target.description.value;
         const food = { name, price, description, category, image };
-        fetch(`http://localhost:5000/api/v1/foods/`, {
+        fetch(`https://foodhub-pi.vercel.app/api/v1/foods/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
