@@ -18,6 +18,7 @@ import Users from './components/admin/Users';
 import RequiteAdmin from './components/authentication/RequireAdmin';
 import AboutPage from './Pages/AboutPage';
 import ContactPage from './Pages/ContactPage';
+import NotFound from './components/NotFound';
 
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
         </Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
